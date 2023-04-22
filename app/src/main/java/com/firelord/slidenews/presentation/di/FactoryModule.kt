@@ -2,6 +2,7 @@ package com.firelord.slidenews.presentation.di
 
 import android.app.Application
 import com.firelord.slidenews.domain.usecase.GetNewsHeadlinesUseCase
+import com.firelord.slidenews.domain.usecase.GetSearchedNewsUseCase
 import com.firelord.slidenews.presentation.viewModel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -17,11 +18,13 @@ class FactoryModule {
     @Provides
     fun provideNewsViewModelFactory(
         application: Application,
-        getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase
+        getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
+        getSearchedNewsUseCase: GetSearchedNewsUseCase
     ):NewsViewModelFactory{
         return NewsViewModelFactory(
             application,
-            getNewsHeadlinesUseCase
+            getNewsHeadlinesUseCase,
+            getSearchedNewsUseCase
         )
     }
 }

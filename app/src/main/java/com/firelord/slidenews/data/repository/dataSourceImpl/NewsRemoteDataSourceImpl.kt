@@ -11,4 +11,8 @@ class NewsRemoteDataSourceImpl(
     override suspend fun getTopHeadlines(country: String, page : Int): Response<APIResponse> {
         return newsAPIService.getTopHeadlines(country,page)
     }
+
+    override suspend fun getSearchedNews(country: String, page: Int, searchQuery: String): Response<APIResponse> {
+        return newsAPIService.getSearchedTopHeadlines(country, searchQuery, page)
+    }
 }
