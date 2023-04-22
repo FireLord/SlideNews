@@ -10,9 +10,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.firelord.slidenews.data.model.APIResponse
+import com.firelord.slidenews.data.model.Article
 import com.firelord.slidenews.data.util.Resource
 import com.firelord.slidenews.domain.usecase.GetNewsHeadlinesUseCase
 import com.firelord.slidenews.domain.usecase.GetSearchedNewsUseCase
+import com.firelord.slidenews.domain.usecase.SaveNewsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.http.Query
@@ -20,7 +22,8 @@ import retrofit2.http.Query
 class NewsViewModel(
     private val app:Application,
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
-    private val getSearchedNewsUseCase: GetSearchedNewsUseCase
+    private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase
 ) : AndroidViewModel(app) {
     val newsHeadLines : MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
@@ -89,5 +92,10 @@ class NewsViewModel(
             searchedNews.postValue(Resource.Error(e.message.toString()))
         }
 
+    }
+
+    // Local data
+    fun saveArticle(article: Article) = viewModelScope.launch{
+        saveNewsUseCase.execute(article)
     }
 }
