@@ -1,6 +1,7 @@
 package com.firelord.slidenews.presentation.di
 
 import android.app.Application
+import com.firelord.slidenews.domain.usecase.DeleteSavedNewsUseCase
 import com.firelord.slidenews.domain.usecase.GetNewsHeadlinesUseCase
 import com.firelord.slidenews.domain.usecase.GetSavedNewsUseCase
 import com.firelord.slidenews.domain.usecase.GetSearchedNewsUseCase
@@ -23,14 +24,16 @@ class FactoryModule {
         getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
         getSearchedNewsUseCase: GetSearchedNewsUseCase,
         saveNewsUseCase: SaveNewsUseCase,
-        getSavedNewsUseCase: GetSavedNewsUseCase
+        getSavedNewsUseCase: GetSavedNewsUseCase,
+        deleteSavedNewsUseCase: DeleteSavedNewsUseCase
     ):NewsViewModelFactory{
         return NewsViewModelFactory(
             application,
             getNewsHeadlinesUseCase,
             getSearchedNewsUseCase,
             saveNewsUseCase,
-            getSavedNewsUseCase
+            getSavedNewsUseCase,
+            deleteSavedNewsUseCase
         )
     }
 }

@@ -1,6 +1,7 @@
 package com.firelord.slidenews.presentation.di
 
 import com.firelord.slidenews.domain.repository.NewsRepository
+import com.firelord.slidenews.domain.usecase.DeleteSavedNewsUseCase
 import com.firelord.slidenews.domain.usecase.GetNewsHeadlinesUseCase
 import com.firelord.slidenews.domain.usecase.GetSavedNewsUseCase
 import com.firelord.slidenews.domain.usecase.GetSearchedNewsUseCase
@@ -45,5 +46,13 @@ class UseCaseModule {
         newsRepository: NewsRepository
     ): GetSavedNewsUseCase {
         return GetSavedNewsUseCase(newsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDeleteSavedNewsUseCase(
+        newsRepository: NewsRepository
+    ): DeleteSavedNewsUseCase {
+        return DeleteSavedNewsUseCase(newsRepository)
     }
 }
