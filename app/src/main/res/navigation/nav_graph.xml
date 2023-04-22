@@ -27,5 +27,9 @@
         android:id="@+id/infoFragment"
         android:name="com.firelord.slidenews.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <argument
+            android:name="selected_article"
+            app:argType="com.firelord.slidenews.data.model.Article" />
+    </fragment>
 </navigation>
