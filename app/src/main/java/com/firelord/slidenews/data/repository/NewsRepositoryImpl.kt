@@ -1,4 +1,4 @@
-package com.firelord.slidenews.data.repository.dataSourceImpl
+package com.firelord.slidenews.data.repository
 
 import com.firelord.slidenews.data.model.APIResponse
 import com.firelord.slidenews.data.model.Article
@@ -45,6 +45,6 @@ class NewsRepositoryImpl(
     }
 
     override fun getSavedNews(): Flow<List<Article>> {
-        TODO("Not yet implemented")
+        return newsLocalDataSource.getSavedArticles()
     }
 }

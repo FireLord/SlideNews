@@ -2,6 +2,7 @@ package com.firelord.slidenews.presentation.di
 
 import com.firelord.slidenews.domain.repository.NewsRepository
 import com.firelord.slidenews.domain.usecase.GetNewsHeadlinesUseCase
+import com.firelord.slidenews.domain.usecase.GetSavedNewsUseCase
 import com.firelord.slidenews.domain.usecase.GetSearchedNewsUseCase
 import com.firelord.slidenews.domain.usecase.SaveNewsUseCase
 import dagger.Module
@@ -36,5 +37,13 @@ class UseCaseModule {
         newsRepository: NewsRepository
     ): SaveNewsUseCase {
         return SaveNewsUseCase(newsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetSavedNewsUseCase(
+        newsRepository: NewsRepository
+    ): GetSavedNewsUseCase {
+        return GetSavedNewsUseCase(newsRepository)
     }
 }
