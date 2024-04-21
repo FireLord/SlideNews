@@ -18,15 +18,16 @@ struct HomeView: View {
                 HeaderView()
                     .padding(.horizontal)
                 
-//                // Scroll List of category
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    LazyHStack {
-//                        ForEach(categoryList, id: \.self) { category in
-//                            Text(category)
-//                        }
-//                    }
-//                }
-//                .padding(.horizontal)
+                // Scroll List of category
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack {
+                        ForEach(categoryList, id: \.self) { category in
+                            Text(category)
+                                .font(.title)
+                        }
+                    }
+                }
+                .padding(.horizontal)
             
                 ZStack {
                     NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor(backgroundColor: .primaryOne, iconBackgroundColor: .tertiaryOne, iconColor: .secondaryOne))
@@ -53,15 +54,13 @@ struct HeaderView: View {
                 .frame(width: 50, height: 50)
                 .overlay {
                     Text("Z")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.outfitFont(.black, fontSize: .largeTitle))
                         .foregroundStyle(.black)
                         .offset(x: 15)
                 }
             
             Text("News")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+                .font(.outfitFont(.bold, fontSize: .largeTitle))
             
             Spacer()
             

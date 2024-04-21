@@ -20,15 +20,14 @@ struct NewsCard: View {
             VStack(alignment: .leading) {
                 // Title
                 Text(article.title)
-                    .font(.largeTitle)
-                    .fontWeight(.medium)
+                    .font(.outfitFont(.medium, fontSize: .largeTitle))
                     .multilineTextAlignment(.leading)
                     .lineLimit(3)
                     .foregroundStyle(.black)
                     .padding()
                 
                 Text("Updated just now.")
-                    .font(.subheadline)
+                    .font(.outfitFont(.regular, fontSize: .subHeadline))
                     .foregroundStyle(.black)
                     .opacity(0.6)
                     .padding(.horizontal)
@@ -44,15 +43,14 @@ struct NewsCard: View {
                     
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Published by")
-                            .font(.subheadline)
+                            .font(.outfitFont(.regular, fontSize: .subHeadline))
                             .foregroundStyle(.black)
                             .opacity(0.6)
                             .padding(.top, 1)
                         
                         // Author name
                         Text(article.author ?? "No Author")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
+                            .font(.outfitFont(.medium, fontSize: .subHeadline))
                             .foregroundStyle(.black)
                             .padding(.top, 1)
                     }
@@ -64,6 +62,7 @@ struct NewsCard: View {
                         print("hi")
                     } label: {
                         Text("Follow")
+                            .font(.outfitFont(.regular, fontSize: .title3))
                             .foregroundStyle(.white)
                             .frame(width: 80, height: 40)
                             .background {
@@ -76,7 +75,7 @@ struct NewsCard: View {
                 
                 // Short description
                 Text(article.description ?? "No description")
-                    .font(.title3)
+                    .font(.outfitFont(.regular, fontSize: .title3))
                     .foregroundStyle(.black)
                     .padding(.horizontal)
                     .padding(.bottom)

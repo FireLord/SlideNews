@@ -12,6 +12,11 @@
 		B22C332E2BD56B7C00D6A63A /* NewsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C332D2BD56B7C00D6A63A /* NewsCard.swift */; };
 		B22C33322BD5754800D6A63A /* NewsFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C33312BD5754800D6A63A /* NewsFetch.swift */; };
 		B22C33342BD57DF600D6A63A /* NewsCardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C33332BD57DF600D6A63A /* NewsCardColor.swift */; };
+		B22C333A2BD5853700D6A63A /* Outfit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22C33362BD5853700D6A63A /* Outfit-Medium.ttf */; };
+		B22C333C2BD5853700D6A63A /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22C33382BD5853700D6A63A /* Outfit-Regular.ttf */; };
+		B22C333D2BD5853700D6A63A /* Outfit-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22C33392BD5853700D6A63A /* Outfit-Black.ttf */; };
+		B22C333F2BD5855500D6A63A /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22C333E2BD5855500D6A63A /* Outfit-Bold.ttf */; };
+		B22C33412BD5859A00D6A63A /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C33402BD5859A00D6A63A /* FontExtension.swift */; };
 		B2B818F62BD53204008EA638 /* SlideNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B818F52BD53204008EA638 /* SlideNewsApp.swift */; };
 		B2B818FA2BD53206008EA638 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B818F92BD53206008EA638 /* Assets.xcassets */; };
 		B2B818FD2BD53206008EA638 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */; };
@@ -23,6 +28,12 @@
 		B22C332D2BD56B7C00D6A63A /* NewsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCard.swift; sourceTree = "<group>"; };
 		B22C33312BD5754800D6A63A /* NewsFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFetch.swift; sourceTree = "<group>"; };
 		B22C33332BD57DF600D6A63A /* NewsCardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardColor.swift; sourceTree = "<group>"; };
+		B22C33362BD5853700D6A63A /* Outfit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Medium.ttf"; sourceTree = "<group>"; };
+		B22C33382BD5853700D6A63A /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
+		B22C33392BD5853700D6A63A /* Outfit-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Black.ttf"; sourceTree = "<group>"; };
+		B22C333E2BD5855500D6A63A /* Outfit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.ttf"; sourceTree = "<group>"; };
+		B22C33402BD5859A00D6A63A /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		B22C33422BD5867D00D6A63A /* Slide-News-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Slide-News-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B2B818F22BD53204008EA638 /* Slide News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slide News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B818F52BD53204008EA638 /* SlideNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideNewsApp.swift; sourceTree = "<group>"; };
 		B2B818F92BD53206008EA638 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +54,7 @@
 		B22C33232BD5358000D6A63A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B22C33352BD5850D00D6A63A /* font */,
 				B22C33262BD5359300D6A63A /* viewModel */,
 				B22C33242BD5358800D6A63A /* screen */,
 				B22C33252BD5358D00D6A63A /* view */,
@@ -107,6 +119,18 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		B22C33352BD5850D00D6A63A /* font */ = {
+			isa = PBXGroup;
+			children = (
+				B22C33392BD5853700D6A63A /* Outfit-Black.ttf */,
+				B22C33362BD5853700D6A63A /* Outfit-Medium.ttf */,
+				B22C33382BD5853700D6A63A /* Outfit-Regular.ttf */,
+				B22C333E2BD5855500D6A63A /* Outfit-Bold.ttf */,
+				B22C33402BD5859A00D6A63A /* FontExtension.swift */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
 		B2B818E92BD53204008EA638 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +154,7 @@
 				B22C33232BD5358000D6A63A /* presentation */,
 				B2B818F52BD53204008EA638 /* SlideNewsApp.swift */,
 				B2B818F92BD53206008EA638 /* Assets.xcassets */,
+				B22C33422BD5867D00D6A63A /* Slide-News-Info.plist */,
 				B2B818FB2BD53206008EA638 /* Preview Content */,
 			);
 			path = "Slide News";
@@ -202,7 +227,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B818FD2BD53206008EA638 /* Preview Assets.xcassets in Resources */,
+				B22C333A2BD5853700D6A63A /* Outfit-Medium.ttf in Resources */,
+				B22C333F2BD5855500D6A63A /* Outfit-Bold.ttf in Resources */,
+				B22C333C2BD5853700D6A63A /* Outfit-Regular.ttf in Resources */,
 				B2B818FA2BD53206008EA638 /* Assets.xcassets in Resources */,
+				B22C333D2BD5853700D6A63A /* Outfit-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +244,7 @@
 			files = (
 				B22C33342BD57DF600D6A63A /* NewsCardColor.swift in Sources */,
 				B22C33322BD5754800D6A63A /* NewsFetch.swift in Sources */,
+				B22C33412BD5859A00D6A63A /* FontExtension.swift in Sources */,
 				B22C332E2BD56B7C00D6A63A /* NewsCard.swift in Sources */,
 				B22C33282BD5362400D6A63A /* HomeView.swift in Sources */,
 				B2B818F62BD53204008EA638 /* SlideNewsApp.swift in Sources */,
@@ -355,6 +385,7 @@
 				DEVELOPMENT_TEAM = C2U69GDD7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Slide-News-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -390,6 +421,7 @@
 				DEVELOPMENT_TEAM = C2U69GDD7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Slide-News-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
