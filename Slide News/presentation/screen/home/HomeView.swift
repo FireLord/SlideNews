@@ -52,8 +52,8 @@ struct HomeView: View {
 }
 
 struct HeaderView: View {
-    let columns: [GridItem] = [GridItem(.flexible()),
-                               GridItem(.flexible())]
+    let columns: [GridItem] = [GridItem(spacing: 3),
+                               GridItem(spacing: 3)]
     var body: some View {
         HStack {
             Circle()
@@ -74,10 +74,11 @@ struct HeaderView: View {
                 print("hi")
             } label: {
                 Circle()
-                    .stroke(lineWidth: 0.2)
+                    .stroke()
                     .frame(width: 50, height: 50)
+                    .foregroundStyle(.graySecondary)
                     .overlay {
-                        LazyVGrid(columns: columns, spacing: 5) {
+                        LazyVGrid(columns: columns, spacing: 3) {
                             ForEach(0...3, id: \.self) { _ in
                                 Circle()
                                     .stroke(lineWidth: 2)

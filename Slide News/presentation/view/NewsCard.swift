@@ -113,7 +113,7 @@ struct NewsCard: View {
                         )
                     }
                 }
-                .padding(.horizontal)
+                .padding()
             }
         }
         .padding(.horizontal)
