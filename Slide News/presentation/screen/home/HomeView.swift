@@ -19,15 +19,19 @@ struct HomeView: View {
                     .padding(.horizontal)
                 
                 // Scroll List of category
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
-                        ForEach(categoryList, id: \.self) { category in
-                            Text(category)
-                                .font(.title)
-                        }
+                HStack(spacing: 20) {
+                    ForEach(0..<categoryList.count, id: \.self) { index in
+                        Text(categoryList[index])
+                            .font(.outfitFont(.regular, fontSize: index == categoryPosition ? .title : .title3))
+                            .foregroundColor(index == categoryPosition ? .white : .gray)
+                            .onTapGesture {
+                                withAnimation {
+                                    categoryPosition = index
+                                }
+                            }
                     }
                 }
-                .padding(.horizontal)
+                .padding()
             
                 ZStack {
                     NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor(backgroundColor: .primaryOne, iconBackgroundColor: .tertiaryOne, iconColor: .secondaryOne))
@@ -35,6 +39,8 @@ struct HomeView: View {
                         .rotationEffect(.degrees(10))
                     NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor)
                 }
+                
+                Spacer()
                 
             }
         }
