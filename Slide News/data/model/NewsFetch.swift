@@ -11,6 +11,13 @@ struct NewsFetch: Codable {
     let status: String
     let totalResults: Int
     let articles: [Article]
+    
+    static let sampleArticleList = [
+        Article.sampleArticle,
+        Article.sampleArticle,
+        Article.sampleArticle,
+        Article.sampleArticle
+    ]
 }
 
 struct Article: Codable {
