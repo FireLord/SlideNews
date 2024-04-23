@@ -89,27 +89,20 @@ struct DetailView: View {
                             image
                                 .resizable()
                                 .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .frame(height: 300)
-                                .padding(.horizontal)
-                                
+
                         case .failure:
                             Image(systemName: "photo") // Placeholder for failure/error
                                 .resizable()
                                 .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .frame(height: 300)
-                                .padding(.horizontal)
                             
                         default:
                             Image("photo") // Placeholder for failure/error
                                 .resizable()
                                 .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .frame(height: 300)
-                                .padding(.horizontal)
                         }
                     }
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(.horizontal)
                 }
                 
                 VStack {
