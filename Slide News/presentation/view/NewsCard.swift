@@ -10,6 +10,9 @@ import SwiftUI
 struct NewsCard: View {
     let article: Article
     let newsCardColor: NewsCardColor
+    @State var x: CGFloat = 0.0
+    @State var y: CGFloat = 0.0
+    @State var degree: Double = 0.0
     
     var body: some View {
         ZStack {
@@ -113,11 +116,40 @@ struct NewsCard: View {
                         )
                     }
                 }
-                .padding()
+                .padding(.bottom)
+                .padding(.horizontal)
             }
         }
         .padding(.horizontal)
-        .frame(height: 500)
+        .frame(height: 550)
+        .offset(x: x, y: y)
+        .rotationEffect(.init(degrees: degree))
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation(.default) {
+                        // Check if the swipe is towards the left
+                        if value.translation.width < 0 {
+                            x = value.translation.width
+                            y = value.translation.height
+                            degree = 7 * (value.translation.width > 0 ? 1 : -1)
+                        }
+                    }
+                }
+                .onEnded { value in
+                    withAnimation(.interpolatingSpring(mass: 1.0, stiffness: 50, damping: 8, initialVelocity: 0)) {
+                        // Check if the swipe is towards the left
+                        if value.translation.width < -100 {
+                            x = -500
+                            degree = -12
+                        } else {
+                            x = 0
+                            y = 0
+                            degree = 0
+                        }
+                    }
+                }
+        )
     }
 }
 

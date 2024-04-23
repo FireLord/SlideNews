@@ -19,6 +19,7 @@ enum FontSize: CGFloat {
     case title = 28
     case title2 = 22
     case title3 = 20
+    case body = 14
     case subHeadline = 15
 }
 

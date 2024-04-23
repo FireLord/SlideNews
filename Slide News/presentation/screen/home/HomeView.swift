@@ -34,10 +34,22 @@ struct HomeView: View {
                 .padding()
             
                 ZStack {
-                    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor(backgroundColor: .primaryOne, iconBackgroundColor: .tertiaryOne, iconColor: .secondaryOne))
-                        .offset(x: 40, y: 20)
-                        .rotationEffect(.degrees(10))
-                    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor)
+                    ForEach(0 ..< 5) { item in
+                        if item % 2 != 0 {
+                            NewsCard(
+                                article: Article.sampleArticle,
+                                newsCardColor: NewsCardColor.sampleColor,
+                                x: 40,
+                                y: 20,
+                                degree: 10
+                            )
+                        } else {
+                            NewsCard(
+                                article: Article.sampleArticle,
+                                newsCardColor: NewsCardColor.sampleColor
+                            )
+                        }
+                    }
                 }
                 
                 Spacer()
