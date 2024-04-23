@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var appViewModel: AppViewModel
     @State var categoryPosition = 0
-    let categoryList = ["Trending", "Health", "Sports", "Finance"]
+    let categoryList = ["Trending", "Health", "Sports", "Business"]
     
     var body: some View {
         NavigationStack {
@@ -19,7 +20,7 @@ struct HomeView: View {
                     .padding(.horizontal)
                 
                 // Scroll List of category
-                HStack(spacing: 20) {
+                HStack(spacing: 18) {
                     ForEach(0..<categoryList.count, id: \.self) { index in
                         Text(categoryList[index])
                             .font(.outfitFont(.regular, fontSize: index == categoryPosition ? .title : .title3))
@@ -34,21 +35,36 @@ struct HomeView: View {
                 .padding()
             
                 ZStack {
-                    ForEach(0 ..< 5) { item in
-                        if item % 2 != 0 {
+                    if appViewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(2)
+                            .tint(.primaryTwo)
+                    } else {
+                        ForEach(0 ..< appViewModel.articleFetchList.count, id: \.self) { index in
+                            let colorIndex = index % NewsCardColor.cardColorList.count
+                            let color = NewsCardColor.cardColorList[colorIndex]
+                            
                             NewsCard(
-                                article: Article.sampleArticle,
-                                newsCardColor: NewsCardColor.sampleColor,
-                                x: 40,
-                                y: 20,
-                                degree: 10
-                            )
-                        } else {
-                            NewsCard(
-                                article: Article.sampleArticle,
-                                newsCardColor: NewsCardColor.sampleColor
+                                article: appViewModel.articleFetchList[index],
+                                newsCardColor: color,
+                                x: index % 2 == 0 ? 40 : 0,
+                                y: index % 2 == 0 ? 20 : 0,
+                                degree: index % 2 == 0 ? 10 : 0
                             )
                         }
+                    }
+                }
+                .alert(item: $appViewModel.alertItem) { alertItem in
+                    Alert(title: alertItem.title,
+                          message: alertItem.message,
+                          dismissButton: alertItem.dismissButton)
+                }
+                .task {
+                    await appViewModel.getAllNews(category: categoryList[categoryPosition] == "Trending" ? "" : categoryList[categoryPosition])
+                }
+                .onChange(of: categoryPosition) { newValue in
+                    Task {
+                        await appViewModel.getAllNews(category: categoryList[categoryPosition] == "Trending" ? "" : categoryList[categoryPosition])
                     }
                 }
                 
@@ -60,7 +76,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(AppViewModel())
 }
 
 struct HeaderView: View {

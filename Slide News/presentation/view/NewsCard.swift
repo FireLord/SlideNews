@@ -78,7 +78,7 @@ struct NewsCard: View {
                 
                 // Short description
                 Text(article.description ?? "No description")
-                    .font(.outfitFont(.regular, fontSize: .title3))
+                    .font(.outfitFont(.light, fontSize: .title3))
                     .foregroundStyle(.black)
                     .padding(.horizontal)
                     .padding(.bottom)

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SlideNewsApp: App {
+    @StateObject var appViewModel = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            MainTabView().environmentObject(appViewModel)
         }
     }
 }

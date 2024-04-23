@@ -13,4 +13,9 @@ struct NewsCardColor {
     let iconColor: Color
     
     static let sampleColor = NewsCardColor(backgroundColor: .primaryTwo, iconBackgroundColor: .tertiaryTwo, iconColor: .secondaryTwo)
+    static let cardColorList = [
+        NewsCardColor(backgroundColor: .primaryOne, iconBackgroundColor: .tertiaryOne, iconColor: .secondaryOne), // MARK: Pink
+        NewsCardColor(backgroundColor: .primaryTwo, iconBackgroundColor: .tertiaryTwo, iconColor: .secondaryTwo), // MARK: Yellow
+        NewsCardColor(backgroundColor: .primaryThree, iconBackgroundColor: .tertiaryThree, iconColor: .secondaryThree) // MARK: Blue
+    ]
 }

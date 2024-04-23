@@ -12,6 +12,7 @@ enum OutfitText: String {
     case bold = "Outfit-Bold"
     case medium = "Outfit-Medium"
     case black = "Outfit-Black"
+    case light = "Outfit-Light"
 }
 
 enum FontSize: CGFloat {
