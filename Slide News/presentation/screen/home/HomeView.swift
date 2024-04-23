@@ -44,13 +44,17 @@ struct HomeView: View {
                             let colorIndex = index % NewsCardColor.cardColorList.count
                             let color = NewsCardColor.cardColorList[colorIndex]
                             
-                            NewsCard(
-                                article: appViewModel.articleFetchList[index],
-                                newsCardColor: color,
-                                x: index % 2 == 0 ? 40 : 0,
-                                y: index % 2 == 0 ? 20 : 0,
-                                degree: index % 2 == 0 ? 10 : 0
-                            )
+                            NavigationLink {
+                                DetailView(article: appViewModel.articleFetchList[index], newsCardColor: color)
+                            } label: {
+                                NewsCard(
+                                    article: appViewModel.articleFetchList[index],
+                                    newsCardColor: color,
+                                    x: index % 2 == 0 ? 40 : 0,
+                                    y: index % 2 == 0 ? 20 : 0,
+                                    degree: index % 2 == 0 ? 10 : 0
+                                )
+                            }
                         }
                     }
                 }
