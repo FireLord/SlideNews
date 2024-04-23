@@ -116,12 +116,12 @@ struct NewsCard: View {
                         )
                     }
                 }
-                .padding(.bottom)
+                .padding(.bottom, 4)
                 .padding(.horizontal)
             }
         }
         .padding(.horizontal)
-        .frame(height: 550)
+        .frame(height: 540)
         .offset(x: x, y: y)
         .rotationEffect(.init(degrees: degree))
         .gesture(
