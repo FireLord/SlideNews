@@ -12,6 +12,7 @@ final class AppViewModel: ObservableObject {
     @Published var articleFetchList: [Article] = []
     @Published var alertItem: AlertItem?
     @Published var isLoading: Bool = false
+    @Published var isNavBarHidden: Bool = false
     
     // MARK: API functions
     func getAllNews(category: String) async {

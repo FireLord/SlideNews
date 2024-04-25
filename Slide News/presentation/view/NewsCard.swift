@@ -13,6 +13,7 @@ struct NewsCard: View {
     @State var x: CGFloat = 0.0
     @State var y: CGFloat = 0.0
     @State var degree: Double = 0.0
+    var onSwipeOut: () -> Void
     
     var body: some View {
         ZStack {
@@ -143,6 +144,7 @@ struct NewsCard: View {
                         if value.translation.width < -100 {
                             x = -500
                             degree = -12
+                            onSwipeOut()
                         } else {
                             x = 0
                             y = 0
@@ -155,5 +157,5 @@ struct NewsCard: View {
 }
 
 #Preview {
-    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor)
+    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor, onSwipeOut: {})
 }

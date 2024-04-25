@@ -29,6 +29,8 @@
 		B2B818F62BD53204008EA638 /* SlideNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B818F52BD53204008EA638 /* SlideNewsApp.swift */; };
 		B2B818FA2BD53206008EA638 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B818F92BD53206008EA638 /* Assets.xcassets */; };
 		B2B818FD2BD53206008EA638 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */; };
+		B2B8F88A2BDADB0F0069ED7D /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F8892BDADB0F0069ED7D /* NewsRepository.swift */; };
+		B2B8F88C2BDAF2D80069ED7D /* SearchCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		B2B818F52BD53204008EA638 /* SlideNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideNewsApp.swift; sourceTree = "<group>"; };
 		B2B818F92BD53206008EA638 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2B8F8892BDADB0F0069ED7D /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				B22C33292BD569E200D6A63A /* ActionButton.swift */,
 				B22C332D2BD56B7C00D6A63A /* NewsCard.swift */,
 				B22835A32BD78E880039E9CC /* AlertView.swift */,
+				B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				B228359B2BD788D70039E9CC /* api */,
 				B22C33302BD56DDB00D6A63A /* model */,
+				B2B8F8862BDADAAB0069ED7D /* repository */,
 				B228359E2BD78BBB0039E9CC /* util */,
 			);
 			path = data;
@@ -218,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				B22C332F2BD56DD700D6A63A /* data */,
+				B2B8F8832BDADA780069ED7D /* domain */,
 				B22C33232BD5358000D6A63A /* presentation */,
 				B2B818F52BD53204008EA638 /* SlideNewsApp.swift */,
 				B2B818F92BD53206008EA638 /* Assets.xcassets */,
@@ -233,6 +240,53 @@
 				B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B2B8F8832BDADA780069ED7D /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8F8852BDADA9E0069ED7D /* repository */,
+				B2B8F8842BDADA980069ED7D /* usecase */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		B2B8F8842BDADA980069ED7D /* usecase */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8F8872BDADAEE0069ED7D /* news */,
+			);
+			path = usecase;
+			sourceTree = "<group>";
+		};
+		B2B8F8852BDADA9E0069ED7D /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8F8882BDADAFF0069ED7D /* news */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		B2B8F8862BDADAAB0069ED7D /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		B2B8F8872BDADAEE0069ED7D /* news */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = news;
+			sourceTree = "<group>";
+		};
+		B2B8F8882BDADAFF0069ED7D /* news */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8F8892BDADB0F0069ED7D /* NewsRepository.swift */,
+			);
+			path = news;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,9 +376,11 @@
 				B22835A42BD78E880039E9CC /* AlertView.swift in Sources */,
 				B22C33282BD5362400D6A63A /* HomeView.swift in Sources */,
 				B2B818F62BD53204008EA638 /* SlideNewsApp.swift in Sources */,
+				B2B8F88A2BDADB0F0069ED7D /* NewsRepository.swift in Sources */,
 				B22C332A2BD569E200D6A63A /* ActionButton.swift in Sources */,
 				B22835AB2BD79CAF0039E9CC /* DetailView.swift in Sources */,
 				B228359D2BD789390039E9CC /* NewsAPIService.swift in Sources */,
+				B2B8F88C2BDAF2D80069ED7D /* SearchCardItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

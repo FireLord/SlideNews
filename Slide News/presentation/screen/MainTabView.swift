@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var appViewModel: AppViewModel
     @State var index = 0
     
     var body: some View {
@@ -67,10 +68,11 @@ struct MainTabView: View {
                     }
                 }
             }
+            .opacity(appViewModel.isNavBarHidden ? 0 : 1)
         }
     }
 }
 
 #Preview {
-    MainTabView()
+    MainTabView().environmentObject(AppViewModel())
 }
