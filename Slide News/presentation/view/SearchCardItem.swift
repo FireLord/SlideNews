@@ -30,27 +30,24 @@ struct SearchCardItem: View {
                     case .failure:
                         Image(systemName: "photo") // Placeholder for failure/error
                             .resizable()
-                            .scaledToFit()
                         
                     default:
                         Image("photo") // Placeholder for failure/error
                             .resizable()
-                            .scaledToFit()
                     }
                 }
                 .frame(width: 120, height: 100)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.leading)
                 
-                VStack {
+                VStack(alignment: .leading) {
                     Text(article.title)
                         .font(.outfitFont(.medium, fontSize: .title3))
                         .lineLimit(2)
                         .foregroundStyle(.black)
+                        .padding(.horizontal)
                     
                     HStack {
-                        Spacer()
-                        
                         Button {
                             print("like")
                         } label: {
@@ -80,6 +77,8 @@ struct SearchCardItem: View {
                                 iconColor: newsCardColor.iconColor
                             )
                         }
+                        
+                        Spacer()
                     }
                     .padding(.bottom, 4)
                     .padding(.horizontal)

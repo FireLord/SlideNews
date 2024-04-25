@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    @EnvironmentObject var appViewModel: AppViewModel
     @State var searchQuery: String = ""
     
     var body: some View {
         VStack(alignment: .leading) {
             // Title
-            Text("Saved News")
+            Text("Search News")
                 .font(.outfitFont(.medium, fontSize: .largeTitle))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
+                .padding(.top, 50)
             
             // Search
             HStack {
@@ -25,9 +27,14 @@ struct SearchView: View {
                     .fill(.grayPrimary)
                     .frame(height: 50)
                     .overlay {
-                        TextField("Search saved news", text: $searchQuery)
+                        TextField("Search news", text: $searchQuery)
                             .font(.outfitFont(.regular, fontSize: .title3))
                             .submitLabel(.search)
+                            .onSubmit {
+                                Task {
+                                    await appViewModel.getSearchNews(searchQuery: searchQuery)
+                                }
+                            }
                             .padding(.leading)
                     }
                 
@@ -37,7 +44,9 @@ struct SearchView: View {
                         .frame(width: 50)
                     
                     Button {
-                        print("hi")
+                        Task {
+                            await appViewModel.getSearchNews(searchQuery: searchQuery)
+                        }
                     } label: {
                         Circle()
                             .fill(.graySecondary)
@@ -54,13 +63,29 @@ struct SearchView: View {
             .padding(.horizontal)
             
             // Search Card
-            
+            ScrollView {
+                LazyVStack {
+                    ForEach(0 ..< appViewModel.articleFetchList.count, id: \.self) { index in
+                        let colorIndex = index % NewsCardColor.cardColorList.count
+                        let color = NewsCardColor.cardColorList[colorIndex]
+                        
+                        SearchCardItem(article: appViewModel.articleFetchList[index], newsCardColor: color)
+                    }
+                }
+            }
+            .alert(item: $appViewModel.alertItem) { alertItem in
+                Alert(title: alertItem.title,
+                      message: alertItem.message,
+                      dismissButton: alertItem.dismissButton)
+            }
+            .padding(.top)
             
             Spacer()
         }
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    SearchView()
+    SearchView().environmentObject(AppViewModel())
 }

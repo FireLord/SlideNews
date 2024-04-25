@@ -36,4 +36,26 @@ final class AppViewModel: ObservableObject {
             isLoading = false
         }
     }
+    
+    func getSearchNews(searchQuery: String) async {
+        isLoading = true
+        do {
+            articleFetchList = try await NewsAPIService.shared.getSearchedNews(searchQuery: searchQuery)
+            isLoading = false
+        } catch {
+            if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
+                alertItem = AlertContext.noInternetConnection
+            } else if let scError = error as? APIError {
+                switch scError {
+                case .invalidURL:
+                    alertItem = AlertContext.invalidURL
+                case .invalidResponse:
+                    alertItem = AlertContext.invalidResponse
+                case .invalidData:
+                    alertItem = AlertContext.invalidData
+                }
+            }
+            isLoading = false
+        }
+    }
 }
