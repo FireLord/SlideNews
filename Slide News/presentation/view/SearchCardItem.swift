@@ -32,56 +32,40 @@ struct SearchCardItem: View {
                             .resizable()
                         
                     default:
-                        Image("photo") // Placeholder for failure/error
+                        Image(systemName: "photo") // Placeholder for failure/error
                             .resizable()
                     }
                 }
-                .frame(width: 120, height: 100)
+                .frame(width: 120)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .padding(.leading)
+                
+                Spacer()
                 
                 VStack(alignment: .leading) {
                     Text(article.title)
                         .font(.outfitFont(.medium, fontSize: .title3))
-                        .lineLimit(2)
+                        .lineLimit(3)
+                        .truncationMode(.head)
                         .foregroundStyle(.black)
-                        .padding(.horizontal)
+                        .padding(.top, 10)
+                        .padding(.trailing)
+                    
+                    Spacer()
                     
                     HStack {
-                        Button {
-                            print("like")
-                        } label: {
-                            ActionButton(
-                                backgroundColor: newsCardColor.iconBackgroundColor,
-                                iconName: "hand.thumbsup",
-                                iconColor: newsCardColor.iconColor
-                            )
-                        }
+                        Text(article.author ?? "Unknown")
+                            .font(.outfitFont(.light, fontSize: .body))
+                            .foregroundStyle(.gray)
                         
-                        Button {
-                            print("like")
-                        } label: {
-                            ActionButton(
-                                backgroundColor: newsCardColor.iconBackgroundColor,
-                                iconName: "bookmark",
-                                iconColor: newsCardColor.iconColor
-                            )
-                        }
+                        Circle()
+                            .fill(.gray)
+                            .frame(width: 4)
                         
-                        Button {
-                            print("like")
-                        } label: {
-                            ActionButton(
-                                backgroundColor: newsCardColor.iconBackgroundColor,
-                                iconName: "square.and.arrow.up",
-                                iconColor: newsCardColor.iconColor
-                            )
-                        }
-                        
-                        Spacer()
+                        Text(convertDate(dateString: article.publishedAt))
+                            .font(.outfitFont(.light, fontSize: .body))
+                            .foregroundStyle(.gray)
                     }
-                    .padding(.bottom, 4)
-                    .padding(.horizontal)
+                    .padding(.bottom, 10)
                 }
             }
             

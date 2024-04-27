@@ -26,7 +26,8 @@ final class NewsDao {
                 title: articleEntity.title,
                 description: articleEntity._description,
                 url: articleEntity.url,
-                urlToImage: articleEntity.urlToImage,
+                urlToImage: articleEntity.urlToImage, 
+                publishedAt: articleEntity.publishedAt,
                 content: articleEntity.content
             )
         }
@@ -39,7 +40,8 @@ final class NewsDao {
             title: article.title,
             _description: article.description,
             url: article.url,
-            urlToImage: article.urlToImage,
+            urlToImage: article.urlToImage, 
+            publishedAt: article.publishedAt,
             content: article.content
         )
         
