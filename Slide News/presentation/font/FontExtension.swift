@@ -16,6 +16,7 @@ enum OutfitText: String {
 }
 
 enum FontSize: CGFloat {
+    case heading = 48
     case largeTitle = 34
     case title = 28
     case title2 = 22

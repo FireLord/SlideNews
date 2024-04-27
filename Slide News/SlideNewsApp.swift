@@ -14,7 +14,7 @@ struct SlideNewsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTabView().environmentObject(appViewModel)
+            LoginView().environmentObject(appViewModel)
         }
         .modelContainer(SlideNewsDatabase.shared.container)
     }
