@@ -11,6 +11,7 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     @FocusState private var focusedTextField: FormTextField?
+    @State var isSignUp: Bool = false
     
     enum FormTextField {
         case email, password
@@ -77,7 +78,7 @@ struct LoginView: View {
                             Button {
                                 
                             } label: {
-                                LoginButton(name: "LOGIN IN")
+                                LoginButton(name: isSignUp ? "SIGN UP" : "LOGIN IN")
                             }
                             .padding(.horizontal)
                             
@@ -87,14 +88,15 @@ struct LoginView: View {
                                 LoginButton(name: "GOOGLE SIGN IN")
                             }
                             .padding(.horizontal)
+                            .opacity(isSignUp ? 0 : 1)
                             
                             
                             Button {
-                                print("hi")
+                                isSignUp.toggle()
                             } label: {
                                 HStack(spacing: 5) {
-                                    Text("Don't have an account?")
-                                    Text("Sign up")
+                                    Text(isSignUp ? "Already have an account?" : "Don't have an account?")
+                                    Text(isSignUp ? "Login" : "Sign up")
                                         .fontWeight(.bold)
                                 }
                                 .font(.outfitFont(.regular, fontSize: .subHeadline))
