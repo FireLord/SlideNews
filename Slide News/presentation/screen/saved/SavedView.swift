@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedView: View {
+    @Environment(\.modelContext) var context
     @State var searchQuery: String = ""
+    @Query() var articleList: [ArticleEntity]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -55,18 +58,31 @@ struct SavedView: View {
             
             // Saved news card
             ZStack {
-                ForEach(0 ..< NewsFetch.sampleArticleList.count, id: \.self) { index in
+                ForEach(0 ..< articleList.count, id: \.self) { index in
                     let colorIndex = index % NewsCardColor.cardColorList.count
                     let color = NewsCardColor.cardColorList[colorIndex]
+                    let articleNew = Article(
+                        author: articleList[index].author,
+                        title: articleList[index].title,
+                        description: articleList[index]._description,
+                        url: articleList[index].url,
+                        urlToImage: articleList[index].urlToImage,
+                        content: articleList[index].content
+                    )
                     
                     NewsCard(
-                        article: NewsFetch.sampleArticleList[index],
+                        article: articleNew,
                         newsCardColor: color,
-                        x: CGFloat(index * -15),
-                        y: CGFloat(index * 200),
-                        degree: CGFloat(index * -5),
+//                        x: CGFloat(index * -15),
+//                        y: CGFloat(index * 200),
+//                        degree: CGFloat(index * -5),
                         onSwipeOut: {
                             print("hi")
+                        }, 
+                        onSave: { article in
+//                            NewsDao.shared.deleteNews(article: article)
+//                            SlideNewsDatabase.shared.context.delete(articleList[index])
+                            context.delete(articleList[index])
                         }
                     )
                     

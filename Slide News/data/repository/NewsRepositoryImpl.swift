@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NewsRepositoryImpl: NewsRepository {
+final class NewsRepositoryImpl {
     let newsRemoteDataSource: NewsRemoteDataSource
     
     init(newsRemoteDataSource: NewsRemoteDataSource) {
@@ -22,15 +22,5 @@ final class NewsRepositoryImpl: NewsRepository {
         return try await newsRemoteDataSource.getSearchNews(searchQuery: searchQuery)
     }
     
-    func getSavedNews() async throws -> [Article] {
-        <#code#>
-    }
     
-    func saveNews(article: Article) async throws {
-        <#code#>
-    }
-    
-    func deleteSavedNews(article: Article) async throws {
-        <#code#>
-    }
 }

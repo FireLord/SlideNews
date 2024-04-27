@@ -14,6 +14,7 @@ struct NewsCard: View {
     @State var y: CGFloat = 0.0
     @State var degree: Double = 0.0
     var onSwipeOut: () -> Void
+    var onSave: (Article) -> Void
     
     var body: some View {
         ZStack {
@@ -99,7 +100,7 @@ struct NewsCard: View {
                     }
                     
                     Button {
-                        print("like")
+                        onSave(article)
                     } label: {
                         ActionButton(
                             backgroundColor: newsCardColor.iconBackgroundColor,
@@ -157,5 +158,5 @@ struct NewsCard: View {
 }
 
 #Preview {
-    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor, onSwipeOut: {})
+    NewsCard(article: Article.sampleArticle, newsCardColor: NewsCardColor.sampleColor, onSwipeOut: {}, onSave: {_ in })
 }

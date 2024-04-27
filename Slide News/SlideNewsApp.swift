@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct SlideNewsApp: App {
@@ -15,5 +16,7 @@ struct SlideNewsApp: App {
         WindowGroup {
             MainTabView().environmentObject(appViewModel)
         }
+        .modelContainer(SlideNewsDatabase.shared.container)
+//        .modelContainer(for: ArticleEntity.self)
     }
 }

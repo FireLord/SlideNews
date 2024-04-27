@@ -55,6 +55,9 @@ struct HomeView: View {
                                     degree: index % 2 == 0 ? 10 : 0,
                                     onSwipeOut: {
                                         appViewModel.articleFetchList.remove(at: index)
+                                    },
+                                    onSave: { article in
+                                        NewsDao.shared.saveNews(article: article)
                                     }
                                 )
                             }
