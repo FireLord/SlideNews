@@ -17,15 +17,20 @@ final class NewsDao {
         self.slideNewsDatabase = slideNewsDatabase
     }
     
-    func getSavedNews() throws -> [ArticleEntity] {
-        let fetchDescriptor = FetchDescriptor<ArticleEntity> (
-            predicate: #Predicate {
-                $0.title != "My"
-            }
-        )
-        
-        let articleList = try slideNewsDatabase.context.fetch(fetchDescriptor)
-        return articleList
+    func getSavedNews() throws -> [Article] {
+        let fetchDescriptor = FetchDescriptor<ArticleEntity>()
+        let articleEntities = try slideNewsDatabase.context.fetch(fetchDescriptor)
+        let articles = articleEntities.map { articleEntity in
+            return Article(
+                author: articleEntity.author,
+                title: articleEntity.title,
+                description: articleEntity._description,
+                url: articleEntity.url,
+                urlToImage: articleEntity.urlToImage,
+                content: articleEntity.content
+            )
+        }
+        return articles
     }
     
     func saveNews(article: Article) {
@@ -41,16 +46,17 @@ final class NewsDao {
         slideNewsDatabase.context.insert(articleEntity)
     }
     
-    func deleteNews(article: Article) {
-        let articleEntity = ArticleEntity(
-            author: article.author,
-            title: article.title,
-            _description: article.description,
-            url: article.url,
-            urlToImage: article.urlToImage,
-            content: article.content
+    func deleteNews(article: Article) throws {
+        let fetchDescriptor = FetchDescriptor<ArticleEntity> (
+            predicate: #Predicate {
+                $0.title == article.title
+            }
         )
         
-        slideNewsDatabase.context.delete(articleEntity)
+        if let articleEntity = try slideNewsDatabase.context.fetch(fetchDescriptor).first {
+            slideNewsDatabase.context.delete(articleEntity)
+        } else {
+            print("Article not found in database")
+        }
     }
 }

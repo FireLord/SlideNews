@@ -17,6 +17,5 @@ struct SlideNewsApp: App {
             MainTabView().environmentObject(appViewModel)
         }
         .modelContainer(SlideNewsDatabase.shared.container)
-//        .modelContainer(for: ArticleEntity.self)
     }
 }

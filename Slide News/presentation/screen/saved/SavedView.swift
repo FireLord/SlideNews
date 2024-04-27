@@ -73,16 +73,14 @@ struct SavedView: View {
                     NewsCard(
                         article: articleNew,
                         newsCardColor: color,
-//                        x: CGFloat(index * -15),
-//                        y: CGFloat(index * 200),
-//                        degree: CGFloat(index * -5),
+                        x: CGFloat(index * -15),
+                        y: CGFloat(index * 200),
+                        degree: CGFloat(index * -5),
                         onSwipeOut: {
                             print("hi")
                         }, 
                         onSave: { article in
-//                            NewsDao.shared.deleteNews(article: article)
-//                            SlideNewsDatabase.shared.context.delete(articleList[index])
-                            context.delete(articleList[index])
+                            NewsDao.shared.deleteNews(article: article)
                         }
                     )
                     
