@@ -76,6 +76,7 @@ struct HomeView: View {
                 }
                 .onChange(of: categoryPosition) { newValue in
                     Task {
+                        appViewModel.articleFetchList = []
                         await appViewModel.getAllNews(category: categoryList[categoryPosition] == "Trending" ? "" : categoryList[categoryPosition])
                     }
                 }

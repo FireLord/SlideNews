@@ -30,7 +30,9 @@ final class AppViewModel: ObservableObject {
     func getAllNews(category: String) async {
         isLoading = true
         do {
-            articleFetchList = try await getAllNewsUseCase.execute(category: category)
+            if articleFetchList.isEmpty {
+                articleFetchList = try await getAllNewsUseCase.execute(category: category)
+            }
             isLoading = false
         } catch {
             if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
