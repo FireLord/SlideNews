@@ -56,7 +56,7 @@ final class NewsDao {
         if let articleEntity = try slideNewsDatabase.context.fetch(fetchDescriptor).first {
             slideNewsDatabase.context.delete(articleEntity)
         } else {
-            print("Article not found in database")
+            throw DBError.deleteError
         }
     }
 }

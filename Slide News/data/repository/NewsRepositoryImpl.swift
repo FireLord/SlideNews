@@ -8,10 +8,15 @@
 import Foundation
 
 final class NewsRepositoryImpl: NewsRepository {
+    static let shared = NewsRepositoryImpl()
+    
     let newsRemoteDataSource: NewsRemoteDataSource
     let newsLocalDataSource: NewsLocalDataSource
     
-    init(newsRemoteDataSource: NewsRemoteDataSource, newsLocalDataSource: NewsLocalDataSource) {
+    init(
+        newsRemoteDataSource: NewsRemoteDataSource = NewsRemoteDataSourceImpl.shared,
+        newsLocalDataSource: NewsLocalDataSource = NewsLocalDataSourceImpl.shared
+    ) {
         self.newsRemoteDataSource = newsRemoteDataSource
         self.newsLocalDataSource = newsLocalDataSource
     }

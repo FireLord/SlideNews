@@ -57,7 +57,9 @@ struct HomeView: View {
                                         appViewModel.articleFetchList.remove(at: index)
                                     },
                                     onSave: { article in
-                                        NewsDao.shared.saveNews(article: article)
+                                        Task {
+                                            try await appViewModel.saveNews(article: article)
+                                        }
                                     }
                                 )
                             }

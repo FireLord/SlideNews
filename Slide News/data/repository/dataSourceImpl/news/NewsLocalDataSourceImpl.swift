@@ -8,9 +8,11 @@
 import Foundation
 
 final class NewsLocalDataSourceImpl: NewsLocalDataSource {
+    static let shared = NewsLocalDataSourceImpl()
+    
     let newsDao: NewsDao
     
-    init(newsDao: NewsDao) {
+    init(newsDao: NewsDao = NewsDao.shared) {
         self.newsDao = newsDao
     }
     

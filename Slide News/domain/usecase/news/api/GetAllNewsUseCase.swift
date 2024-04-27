@@ -8,9 +8,11 @@
 import Foundation
 
 final class GetAllNewsUseCase {
+    static let shared = GetAllNewsUseCase()
+    
     let newsRepository: NewsRepository
     
-    init(newsRepository: NewsRepository) {
+    init(newsRepository: NewsRepository = NewsRepositoryImpl.shared) {
         self.newsRepository = newsRepository
     }
     
