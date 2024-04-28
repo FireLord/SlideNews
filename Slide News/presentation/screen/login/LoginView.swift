@@ -38,7 +38,7 @@ struct LoginView: View {
                         Text("Slide News")
                             .font(.outfitFont(.medium, fontSize: .heading))
                             .foregroundStyle(.black)
-                            .background(WaveUnderline())
+                            .background(WaveUnderline(waveColor: .black, waveWidth: 2))
                             .padding(.horizontal)
                         
                         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {

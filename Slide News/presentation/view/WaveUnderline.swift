@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WaveUnderline: View {
+    let waveColor: Color
+    let waveWidth: CGFloat
+    
     var body: some View {
         GeometryReader { proxy in
             Path { path in
@@ -26,11 +29,12 @@ struct WaveUnderline: View {
                     isUpwards.toggle()
                 }
             }
-            .stroke(Color.black, lineWidth: 2)
+            .stroke(waveColor, lineWidth: waveWidth)
         }
     }
 }
 
 #Preview {
-    WaveUnderline()
+    WaveUnderline(waveColor: .white, waveWidth: 2)
+        .frame(width: 100, height: 100)
 }
