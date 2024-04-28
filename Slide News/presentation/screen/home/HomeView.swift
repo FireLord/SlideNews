@@ -84,6 +84,9 @@ struct HomeView: View {
                 Spacer()
                 
             }
+            .onAppear {
+                UserDefaults.standard.set(true, forKey: "homeOpen")
+            }
         }
     }
 }

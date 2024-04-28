@@ -122,6 +122,7 @@ final class LoginViewModel: ObservableObject {
         if resultBool {
             userSession = nil
             currentUser = nil
+            UserDefaults.standard.set(false, forKey: "homeOpen")
             do {
                 try SlideNewsDatabase.shared.deleteDatabase()
             } catch {
