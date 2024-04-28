@@ -89,10 +89,12 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView().environmentObject(AppViewModel())
+    HomeView().environmentObject(AppViewModel()).environmentObject(LoginViewModel())
 }
 
 struct HeaderView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
     let columns: [GridItem] = [GridItem(spacing: 3),
                                GridItem(spacing: 3)]
     var body: some View {
@@ -112,7 +114,9 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                print("hi")
+                Task {
+                    loginViewModel.signOut()
+                }
             } label: {
                 Circle()
                     .stroke()

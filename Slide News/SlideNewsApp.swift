@@ -12,6 +12,7 @@ import FirebaseCore
 @main
 struct SlideNewsApp: App {
     @StateObject var appViewModel = AppViewModel()
+    @StateObject var loginViewModel = LoginViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -19,7 +20,9 @@ struct SlideNewsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView().environmentObject(appViewModel)
+            LoginView()
+                .environmentObject(appViewModel)
+                .environmentObject(loginViewModel)
         }
         .modelContainer(SlideNewsDatabase.shared.container)
     }
