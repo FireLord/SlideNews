@@ -32,7 +32,7 @@ final class LoginViewModel: ObservableObject {
     }
     
     // MARK: Login functions
-    func signIn(withEmail email: String, password: String) async throws {
+    func loginIn(withEmail email: String, password: String) async throws {
         do {
             userSession = try await loginEmailUseCase.execute(withEmail: email, password: password)
         } catch {

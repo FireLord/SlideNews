@@ -18,6 +18,6 @@ final class LoginEmailUseCase {
     }
     
     func execute(withEmail email: String, password: String) async throws -> Firebase.User? {
-        return try await authRepository.signIn(withEmail: email, password: password)
+        return try await authRepository.loginIn(withEmail: email, password: password)
     }
 }

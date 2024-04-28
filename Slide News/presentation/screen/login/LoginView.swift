@@ -26,16 +26,22 @@ struct LoginView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                     
-                    Text("Hey,\nwelcome to\nSlide News")
+                    Text("Hey,\nwelcome to")
                         .font(.outfitFont(.medium, fontSize: .heading))
                         .foregroundStyle(.black)
-                        .padding()
+                        .padding(.horizontal)
                         .padding(.top, 40)
+                    
+                    Text("Slide News")
+                        .font(.outfitFont(.medium, fontSize: .heading))
+                        .foregroundStyle(.black)
+                        .background(WaveUnderline())
+                        .padding(.horizontal)
                     
                     ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.grayPrimary)
-                            .shadow(radius: 10, y: -10)
+                            .shadow(color: .graySecondary, radius: 5, y: -1)
                         
                         VStack {
                             NavigationLink {
@@ -48,7 +54,7 @@ struct LoginView: View {
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .foregroundStyle(.white)
                                     .padding(.horizontal, 30)
-                                    .padding(.top, 30)
+                                    .padding(.top, 20)
                             }
                             
                             InputView(
@@ -61,7 +67,8 @@ struct LoginView: View {
                                 focusedTextField = .password
                             }
                             .submitLabel(.continue)
-                            .padding()
+                            .padding(.top)
+                            .padding(.horizontal)
                             
                             InputView(
                                 text: $password,
@@ -74,40 +81,83 @@ struct LoginView: View {
                                 focusedTextField = nil
                             }
                             .submitLabel(.done)
-                            .padding()
+                            .padding(.horizontal)
                             
                             Button {
                                 
                             } label: {
-                                LoginButton(name: isSignUp ? "SIGN UP" : "LOGIN IN")
+                                Text("Forgot password?")
+                                    .font(.outfitFont(.bold, fontSize: .subHeadline))
+                                    .foregroundStyle(.primaryTwo)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding()
+                            .opacity(isSignUp ? 0 : 1)
+                            
+                            
+                            Button {
+                                Task {
+                                    if isSignUp {
+                                        try await viewModel.createUserAccount(withEmail: email, password: password)
+                                    } else {
+                                        try await viewModel.loginIn(withEmail: email, password: password)
+                                    }
+                                }
+                            } label: {
+                                LoginButton(
+                                    name: isSignUp ? "SIGN UP" : "LOGIN",
+                                    buttonColor: .primaryTwo,
+                                    textColor: .black
+                                )
                             }
                             .disabled(!formIsValid)
                             .opacity(formIsValid ? 1.0 : 0.5)
                             .padding(.horizontal)
                             
                             Button {
-                                Task {
-                                    try await viewModel.signInGoogle()
-                                }
-                            } label: {
-                                LoginButton(name: "CONTINUE WITH GOOGLE")
-                            }
-                            .padding(.horizontal)
-                            .opacity(isSignUp ? 0 : 1)
-                            
-                            
-                            Button {
                                 isSignUp.toggle()
                             } label: {
                                 HStack(spacing: 5) {
                                     Text(isSignUp ? "Already have an account?" : "Don't have an account?")
+                                    
                                     Text(isSignUp ? "Login" : "Sign up")
+                                        .foregroundStyle(.primaryTwo)
                                         .fontWeight(.bold)
                                 }
                                 .font(.outfitFont(.regular, fontSize: .subHeadline))
                                 .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(.top)
+                            .padding(.horizontal)
+                            
+                            HStack {
+                                VStack {
+                                    Divider()
+                                        .background(.primaryTwo)
+                                }
+                                
+                                Text("OR")
+                                    .font(.outfitFont(.regular, fontSize: .subHeadline))
+                                    .foregroundStyle(.primaryTwo)
+                                
+                                VStack {
+                                    Divider()
+                                        .background(.primaryTwo)
+                                }
                             }
                             .padding()
+                            .opacity(isSignUp ? 0 : 1)
+                            
+                            Button {
+                                Task {
+                                    try await viewModel.signInGoogle()
+                                }
+                            } label: {
+                                GoogleButton(buttonColor: .primaryTwo, textColor: .primaryTwo)
+                            }
+                            .padding(.horizontal)
+                            .opacity(isSignUp ? 0 : 1)
                             
                             Spacer()
                         }

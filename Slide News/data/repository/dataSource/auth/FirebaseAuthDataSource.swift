@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 protocol FirebaseAuthDataSource {
-    func signIn(withEmail email: String, password: String) async throws -> Firebase.User?
+    func loginIn(withEmail email: String, password: String) async throws -> Firebase.User?
     func createUser(withEmail email: String, password: String) async throws -> Firebase.User?
     func signInGoogle() async throws -> Firebase.User?
     func signOut() -> Bool

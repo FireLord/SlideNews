@@ -14,7 +14,7 @@ import GoogleSignInSwift
 final class FirebaseAuthRemoteDataSourceImpl: FirebaseAuthDataSource {
     static let shared = FirebaseAuthRemoteDataSourceImpl()
     
-    func signIn(withEmail email: String, password: String) async throws -> Firebase.User? {
+    func loginIn(withEmail email: String, password: String) async throws -> Firebase.User? {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             return result.user

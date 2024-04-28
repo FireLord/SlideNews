@@ -17,8 +17,8 @@ final class AuthRepositoryImpl: AuthRepository {
         self.firebaseAuthDataSource = firebaseAuthDataSource
     }
     
-    func signIn(withEmail email: String, password: String) async throws -> Firebase.User? {
-        return try await firebaseAuthDataSource.signIn(withEmail: email, password: password)
+    func loginIn(withEmail email: String, password: String) async throws -> Firebase.User? {
+        return try await firebaseAuthDataSource.loginIn(withEmail: email, password: password)
     }
     
     func createUser(withEmail email: String, password: String) async throws -> Firebase.User? {
