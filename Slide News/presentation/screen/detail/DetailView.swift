@@ -171,6 +171,7 @@ struct DetailView: View {
             }
             .ignoresSafeArea()
             .navigationBarBackButtonHidden()
+            .swipeToGoBack()
             .onAppear {
                 appViewModel.isNavBarHidden.toggle()
             }
