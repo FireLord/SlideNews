@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject private var viewModel = LoginViewModel()
     @State var email: String = ""
     @State var password: String = ""
     @FocusState private var focusedTextField: FormTextField?
@@ -25,7 +26,7 @@ struct LoginView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                     
-                    Text("Hey,\nWelcome To\nSlide News")
+                    Text("Hey,\nwelcome to\nSlide News")
                         .font(.outfitFont(.medium, fontSize: .heading))
                         .foregroundStyle(.black)
                         .padding()
@@ -80,12 +81,16 @@ struct LoginView: View {
                             } label: {
                                 LoginButton(name: isSignUp ? "SIGN UP" : "LOGIN IN")
                             }
+                            .disabled(!formIsValid)
+                            .opacity(formIsValid ? 1.0 : 0.5)
                             .padding(.horizontal)
                             
                             Button {
-                                
+                                Task {
+                                    try await viewModel.signInGoogle()
+                                }
                             } label: {
-                                LoginButton(name: "GOOGLE SIGN IN")
+                                LoginButton(name: "CONTINUE WITH GOOGLE")
                             }
                             .padding(.horizontal)
                             .opacity(isSignUp ? 0 : 1)
@@ -117,4 +122,13 @@ struct LoginView: View {
 
 #Preview {
     LoginView(email: "abc@gmail.com", password: "23423432")
+}
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+    }
 }
