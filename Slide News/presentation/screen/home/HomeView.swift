@@ -53,6 +53,7 @@ struct HomeView: View {
                                     x: index % 2 == 0 ? 40 : 0,
                                     y: index % 2 == 0 ? 20 : 0,
                                     degree: index % 2 == 0 ? 10 : 0,
+                                    isCustomGesture: true,
                                     onSwipeOut: {
                                         appViewModel.articleFetchList.remove(at: index)
                                     },

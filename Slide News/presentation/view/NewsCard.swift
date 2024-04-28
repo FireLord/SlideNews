@@ -13,6 +13,7 @@ struct NewsCard: View {
     @State var x: CGFloat = 0.0
     @State var y: CGFloat = 0.0
     @State var degree: Double = 0.0
+    var isCustomGesture: Bool = false
     var onSwipeOut: () -> Void
     var onSave: (Article) -> Void
     
@@ -130,26 +131,31 @@ struct NewsCard: View {
         .gesture(
             DragGesture()
                 .onChanged { value in
-                    withAnimation(.default) {
-                        // Check if the swipe is towards the left
-                        if value.translation.width < 0 {
-                            x = value.translation.width
-                            y = value.translation.height
-                            degree = 7 * (value.translation.width > 0 ? 1 : -1)
+                    if isCustomGesture {
+                        withAnimation(.default) {
+                            // Check if the swipe is towards the left
+                            if value.translation.width < 0 {
+                                x = value.translation.width
+                                y = value.translation.height
+                                degree = 7 * (value.translation.width > 0 ? 1 : -1)
+                            }
                         }
                     }
+                    
                 }
                 .onEnded { value in
-                    withAnimation(.interpolatingSpring(mass: 1.0, stiffness: 50, damping: 8, initialVelocity: 0)) {
-                        // Check if the swipe is towards the left
-                        if value.translation.width < -100 {
-                            x = -500
-                            degree = -12
-                            onSwipeOut()
-                        } else {
-                            x = 0
-                            y = 0
-                            degree = 0
+                    if isCustomGesture {
+                        withAnimation(.interpolatingSpring(mass: 1.0, stiffness: 50, damping: 8, initialVelocity: 0)) {
+                            // Check if the swipe is towards the left
+                            if value.translation.width < -100 {
+                                x = -500
+                                degree = -12
+                                onSwipeOut()
+                            } else {
+                                x = 0
+                                y = 0
+                                degree = 0
+                            }
                         }
                     }
                 }

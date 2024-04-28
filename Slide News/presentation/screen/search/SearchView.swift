@@ -73,7 +73,14 @@ struct SearchView: View {
                             NavigationLink {
                                 DetailView(article: appViewModel.articleFetchList[index], newsCardColor: color)
                             } label: {
-                                SearchCardItem(article: appViewModel.articleFetchList[index], newsCardColor: color)
+                                SearchCardItem(
+                                    article: appViewModel.articleFetchList[index],
+                                    newsCardColor: color
+                                )
+                                .scrollTransition(.animated) { content, phase in
+                                    content
+                                        .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                                }
                             }
                         }
                     }
