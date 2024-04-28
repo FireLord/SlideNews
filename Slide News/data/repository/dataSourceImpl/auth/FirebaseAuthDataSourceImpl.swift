@@ -86,28 +86,19 @@ final class FirebaseAuthRemoteDataSourceImpl: FirebaseAuthDataSource {
     func fetchUser() async throws -> User? {
         do {
             guard let uid = Auth.auth().currentUser?.uid else { throw URLError(.cannotFindHost)  }
-            guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {
+            guard let snapshot =
+                    try? await Firestore.firestore().collection("users").document(uid).collection("cred").document(uid).getDocument()
+            else {
                 throw URLError(.cannotFindHost)
             }
             
-            if let userData = snapshot.data()?["user"] as? [String: Any] {
-                var users: [User] = []
-                for (_, value) in userData {
-                    if let userDict = value as? [String: Any] {
-                        do {
-                            let user = try Firestore.Decoder().decode(User.self, from: userDict)
-                            users.append(user)
-                        } catch {
-                            // Handle decoding error here
-                            print("Failed to decode song: \(error.localizedDescription)")
-                        }
-                    }
+            if let documentData = snapshot.data() {
+                if let userData = documentData["user"] as? [String: Any], let encodeUser = userData[uid] as? [String: Any] {
+                    let user = try Firestore.Decoder().decode(User.self, from: encodeUser)
+                    return user
                 }
-                return users.first
-            } else {
-                // No user found
-                return nil
             }
+            return nil
         } catch {
             throw error
         }
@@ -117,7 +108,7 @@ final class FirebaseAuthRemoteDataSourceImpl: FirebaseAuthDataSource {
         do {
             let encodeUser = try Firestore.Encoder().encode(user)
             let userData = ["\(user.id)": encodeUser]
-            try await Firestore.firestore().collection("users").document(user.id).setData(["user": userData], merge: true)
+            try await Firestore.firestore().collection("users").document(user.id).collection("cred").document(user.id).setData(["user": userData], merge: true)
             return true
         } catch {
             print("DEBUG: Failed with error \(error.localizedDescription)")

@@ -71,6 +71,11 @@ final class LoginViewModel: ObservableObject {
     func createUserAccount(withEmail email: String, password: String) async throws {
         do {
             userSession = try await createUserUseCase.execute(withEmail: email, password: password)
+            guard let _userSession = userSession else {
+                return
+            }
+            let user = User(id: _userSession.uid, email: _userSession.email!)
+            try await saveUserAccount(user: user)
         } catch {
             if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
                         alertItem = AlertContext.noInternetConnection
@@ -90,6 +95,7 @@ final class LoginViewModel: ObservableObject {
     func fetchUserAccount() async throws {
         do {
             currentUser = try await fetchUserUseCase.execute()
+            print(currentUser.self)
         } catch {
             if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
                 alertItem = AlertContext.noInternetConnection

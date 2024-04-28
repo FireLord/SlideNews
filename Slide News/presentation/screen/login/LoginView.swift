@@ -166,6 +166,11 @@ struct LoginView: View {
                 }
             }
             .ignoresSafeArea()
+            .alert(item: $viewModel.alertItem) { alertItem in
+                Alert(title: alertItem.title,
+                      message: alertItem.message,
+                      dismissButton: alertItem.dismissButton)
+            }
         }
     }
 }
