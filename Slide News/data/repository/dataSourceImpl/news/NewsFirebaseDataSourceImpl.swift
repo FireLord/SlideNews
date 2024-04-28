@@ -18,7 +18,8 @@ final class NewsFirebaseDataSourceImpl: NewsFirebaseDataSource {
             var articles: [Article] = []
             for document in querySnapshot.documents {
                 if let articleData = document.data()["article"] as? [String: Any] {
-                    let article = try Firestore.Decoder().decode(Article.self, from: articleData)
+                    var article = try Firestore.Decoder().decode(Article.self, from: articleData)
+                    article.id = document.documentID
                     articles.append(article)
                 }
             }
@@ -31,8 +32,9 @@ final class NewsFirebaseDataSourceImpl: NewsFirebaseDataSource {
     func saveNewsToFb(article: Article) async throws -> Bool {
         do {
             guard let uid = Auth.auth().currentUser?.uid else { throw URLError(.cannotFindHost)  }
-            let encodeAudioFetch = try Firestore.Encoder().encode(article)
-            try await Firestore.firestore().collection("users").document(uid).collection("news").document(article.id).setData(["article": encodeAudioFetch])
+            var encodeNews = try Firestore.Encoder().encode(article)
+            encodeNews["id"] = article.id
+            try await Firestore.firestore().collection("users").document(uid).collection("news").document(article.id).setData(["article": encodeNews])
             return true
         } catch {
             throw DBError.createError
