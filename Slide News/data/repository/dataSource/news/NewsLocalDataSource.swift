@@ -9,7 +9,7 @@ import Foundation
 
 protocol NewsLocalDataSource {
     // MARK: DB calling functions (crud)
-    func getSavedNews() throws -> [Article]
-    func saveNews(article: Article)
-    func deleteSavedNews(article: Article) throws
+    func getSavedNewsFromDb() throws -> [Article]
+    func saveNewsToDb(article: Article)
+    func deleteSavedNewsFromDb(article: Article) throws
 }

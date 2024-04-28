@@ -11,7 +11,7 @@ import SwiftData
 final class SlideNewsDatabase {
     static let shared = SlideNewsDatabase()
     
-    let container: ModelContainer
+    var container: ModelContainer
     let context: ModelContext
     
     init() {
@@ -26,5 +26,18 @@ final class SlideNewsDatabase {
         }()
         
         context = ModelContext(container)
+    }
+    
+    func deleteDatabase() throws {
+        container.deleteAllData()
+        container = {
+            let schema = Schema([ArticleEntity.self])
+            do {
+                let container = try ModelContainer(for: schema, configurations: [])
+                return container
+            } catch {
+                fatalError("Cannot Load Swift Data")
+            }
+        }()
     }
 }

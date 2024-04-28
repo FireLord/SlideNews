@@ -122,6 +122,11 @@ final class LoginViewModel: ObservableObject {
         if resultBool {
             userSession = nil
             currentUser = nil
+            do {
+                try SlideNewsDatabase.shared.deleteDatabase()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

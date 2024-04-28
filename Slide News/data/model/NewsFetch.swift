@@ -21,6 +21,7 @@ struct NewsFetch: Codable {
 }
 
 struct Article: Codable {
+    var id = UUID().uuidString
     let author: String?
     let title: String
     let description: String?
@@ -28,6 +29,10 @@ struct Article: Codable {
     let urlToImage: String?
     let publishedAt: String
     let content: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case author, title, description, url, urlToImage, publishedAt, content
+    }
     
     static let sampleArticle = Article(
         author: "Lifestyle Desk",

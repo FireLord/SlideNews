@@ -47,6 +47,7 @@ final class AppViewModel: ObservableObject {
                     alertItem = AlertContext.invalidData
                 }
             }
+            print(error.localizedDescription)
             isLoading = false
         }
     }

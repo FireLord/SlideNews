@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class ArticleEntity {
+    var id: String
     var author: String?
     var title: String
     var _description: String?
@@ -18,7 +19,8 @@ class ArticleEntity {
     var publishedAt: String
     var content: String?
     
-    init(author: String? = nil, title: String, _description: String? = nil, url: String, urlToImage: String? = nil, publishedAt: String, content: String? = nil) {
+    init(id: String, author: String? = nil, title: String, _description: String? = nil, url: String, urlToImage: String? = nil, publishedAt: String, content: String? = nil) {
+        self.id = id
         self.author = author
         self.title = title
         self._description = _description

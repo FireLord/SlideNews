@@ -16,15 +16,15 @@ final class NewsLocalDataSourceImpl: NewsLocalDataSource {
         self.newsDao = newsDao
     }
     
-    func getSavedNews() throws -> [Article] {
+    func getSavedNewsFromDb() throws -> [Article] {
         return try newsDao.getSavedNews()
     }
     
-    func saveNews(article: Article) {
+    func saveNewsToDb(article: Article) {
         return newsDao.saveNews(article: article)
     }
     
-    func deleteSavedNews(article: Article) throws {
+    func deleteSavedNewsFromDb(article: Article) throws {
         return try newsDao.deleteNews(article: article)
     }
 }

@@ -22,6 +22,7 @@ final class NewsDao {
         let articleEntities = try slideNewsDatabase.context.fetch(fetchDescriptor)
         let articles = articleEntities.map { articleEntity in
             return Article(
+                id: articleEntity.id,
                 author: articleEntity.author,
                 title: articleEntity.title,
                 description: articleEntity._description,
@@ -36,6 +37,7 @@ final class NewsDao {
     
     func saveNews(article: Article) {
         let articleEntity = ArticleEntity(
+            id: article.id,
             author: article.author,
             title: article.title,
             _description: article.description,
