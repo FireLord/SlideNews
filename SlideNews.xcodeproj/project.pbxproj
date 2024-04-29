@@ -74,6 +74,8 @@
 		B2B818FD2BD53206008EA638 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */; };
 		B2B8F88A2BDADB0F0069ED7D /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F8892BDADB0F0069ED7D /* NewsRepository.swift */; };
 		B2B8F88C2BDAF2D80069ED7D /* SearchCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */; };
+		B2E86E2B2BE022E500ED4924 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */; };
+		B2E86E2D2BE0234200ED4924 /* AnyRoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E86E2C2BE0234200ED4924 /* AnyRoundedCorner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +143,8 @@
 		B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B2B8F8892BDADB0F0069ED7D /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
 		B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardItem.swift; sourceTree = "<group>"; };
+		B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
+		B2E86E2C2BE0234200ED4924 /* AnyRoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRoundedCorner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +307,7 @@
 		B22C33232BD5358000D6A63A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B2E86E292BE022CC00ED4924 /* extension */,
 				B22C33352BD5850D00D6A63A /* font */,
 				B22C33262BD5359300D6A63A /* viewModel */,
 				B22C33242BD5358800D6A63A /* screen */,
@@ -337,6 +342,7 @@
 				B243A8A12BDE2C1D000685F5 /* GoogleButton.swift */,
 				B243A8A32BDE30B6000685F5 /* WaveUnderline.swift */,
 				B243A8AB2BDE7797000685F5 /* BottomNavCustomShape.swift */,
+				B2E86E2C2BE0234200ED4924 /* AnyRoundedCorner.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -501,6 +507,14 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
+		B2E86E292BE022CC00ED4924 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -607,7 +621,9 @@
 				B243A8A22BDE2C1D000685F5 /* GoogleButton.swift in Sources */,
 				B26FC5A02BDD6AFD001A73B1 /* NewsDao.swift in Sources */,
 				B21306682BDE16FA00D1CF1D /* AuthRepositoryImpl.swift in Sources */,
+				B2E86E2D2BE0234200ED4924 /* AnyRoundedCorner.swift in Sources */,
 				B22C33412BD5859A00D6A63A /* FontExtension.swift in Sources */,
+				B2E86E2B2BE022E500ED4924 /* AuthenticationFormProtocol.swift in Sources */,
 				B22C33462BD58F4D00D6A63A /* MainTabView.swift in Sources */,
 				B22835A02BD78BCA0039E9CC /* APIError.swift in Sources */,
 				B243A8A62BDE3F6F000685F5 /* NewsFirebaseDataSource.swift in Sources */,

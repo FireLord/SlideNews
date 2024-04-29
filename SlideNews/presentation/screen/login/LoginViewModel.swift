@@ -8,10 +8,6 @@
 import Foundation
 import Firebase
 
-protocol AuthenticationFormProtocol {
-    var formIsValid: Bool { get }
-}
-
 @MainActor
 final class LoginViewModel: ObservableObject {
     // MARK: login variables

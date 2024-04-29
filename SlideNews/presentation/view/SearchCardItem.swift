@@ -37,7 +37,7 @@ struct SearchCardItem: View {
                     }
                 }
                 .frame(width: 120)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .cornerRadius(10, corners: [.topLeft, .bottomLeft])
                 
                 Spacer()
                 
