@@ -67,6 +67,12 @@ struct MainTabView: View {
                             }
                     }
                 }
+                .background(
+                    PeanutShape()
+                        .foregroundStyle(.grayPrimary)
+                        .frame(width: 140)
+                        .shadow(radius: 10)
+                )
             }
             .opacity(appViewModel.isNavBarHidden ? 0 : 1)
         }
