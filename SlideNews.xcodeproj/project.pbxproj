@@ -115,7 +115,7 @@
 		B22C33392BD5853700D6A63A /* Outfit-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Black.ttf"; sourceTree = "<group>"; };
 		B22C333E2BD5855500D6A63A /* Outfit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.ttf"; sourceTree = "<group>"; };
 		B22C33402BD5859A00D6A63A /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
-		B22C33422BD5867D00D6A63A /* Slide-News-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Slide-News-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B22C33422BD5867D00D6A63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B22C33452BD58F4D00D6A63A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B22C334A2BD58F9200D6A63A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B22C334C2BD58F9C00D6A63A /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		B26FC5B32BDD95D9001A73B1 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		B26FC5B52BDDA1FC001A73B1 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B26FC5C32BDDAB38001A73B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B2B818F22BD53204008EA638 /* Slide News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slide News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2B818F22BD53204008EA638 /* SlideNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B818F52BD53204008EA638 /* SlideNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideNewsApp.swift; sourceTree = "<group>"; };
 		B2B818F92BD53206008EA638 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B818FC2BD53206008EA638 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 		B2B818E92BD53204008EA638 = {
 			isa = PBXGroup;
 			children = (
-				B2B818F42BD53204008EA638 /* Slide News */,
+				B2B818F42BD53204008EA638 /* SlideNews */,
 				B2B818F32BD53204008EA638 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -455,12 +455,12 @@
 		B2B818F32BD53204008EA638 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2B818F22BD53204008EA638 /* Slide News.app */,
+				B2B818F22BD53204008EA638 /* SlideNews.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2B818F42BD53204008EA638 /* Slide News */ = {
+		B2B818F42BD53204008EA638 /* SlideNews */ = {
 			isa = PBXGroup;
 			children = (
 				B22C332F2BD56DD700D6A63A /* data */,
@@ -468,11 +468,11 @@
 				B22C33232BD5358000D6A63A /* presentation */,
 				B2B818F52BD53204008EA638 /* SlideNewsApp.swift */,
 				B2B818F92BD53206008EA638 /* Assets.xcassets */,
-				B22C33422BD5867D00D6A63A /* Slide-News-Info.plist */,
+				B22C33422BD5867D00D6A63A /* Info.plist */,
 				B26FC5C32BDDAB38001A73B1 /* GoogleService-Info.plist */,
 				B2B818FB2BD53206008EA638 /* Preview Content */,
 			);
-			path = "Slide News";
+			path = SlideNews;
 			sourceTree = "<group>";
 		};
 		B2B818FB2BD53206008EA638 /* Preview Content */ = {
@@ -504,9 +504,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B2B818F12BD53204008EA638 /* Slide News */ = {
+		B2B818F12BD53204008EA638 /* SlideNews */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2B819002BD53206008EA638 /* Build configuration list for PBXNativeTarget "Slide News" */;
+			buildConfigurationList = B2B819002BD53206008EA638 /* Build configuration list for PBXNativeTarget "SlideNews" */;
 			buildPhases = (
 				B2B818EE2BD53204008EA638 /* Sources */,
 				B2B818EF2BD53204008EA638 /* Frameworks */,
@@ -516,7 +516,7 @@
 			);
 			dependencies = (
 			);
-			name = "Slide News";
+			name = SlideNews;
 			packageProductDependencies = (
 				B26FC5B82BDDAA85001A73B1 /* GoogleSignIn */,
 				B26FC5BA2BDDAA85001A73B1 /* GoogleSignInSwift */,
@@ -525,7 +525,7 @@
 				B26FC5C12BDDAAF6001A73B1 /* FirebaseFirestoreSwift */,
 			);
 			productName = "Slide News";
-			productReference = B2B818F22BD53204008EA638 /* Slide News.app */;
+			productReference = B2B818F22BD53204008EA638 /* SlideNews.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -543,7 +543,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B2B818ED2BD53204008EA638 /* Build configuration list for PBXProject "Slide News" */;
+			buildConfigurationList = B2B818ED2BD53204008EA638 /* Build configuration list for PBXProject "SlideNews" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -560,7 +560,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B2B818F12BD53204008EA638 /* Slide News */,
+				B2B818F12BD53204008EA638 /* SlideNews */,
 			);
 		};
 /* End PBXProject section */
@@ -774,11 +774,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Slide News/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SlideNews/Preview Content\"";
 				DEVELOPMENT_TEAM = C2U69GDD7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Slide-News-Info.plist";
+				INFOPLIST_FILE = SlideNews/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Slide News";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -815,7 +816,8 @@
 				DEVELOPMENT_TEAM = C2U69GDD7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Slide-News-Info.plist";
+				INFOPLIST_FILE = SlideNews/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Slide News";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -844,7 +846,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B2B818ED2BD53204008EA638 /* Build configuration list for PBXProject "Slide News" */ = {
+		B2B818ED2BD53204008EA638 /* Build configuration list for PBXProject "SlideNews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2B818FE2BD53206008EA638 /* Debug */,
@@ -853,7 +855,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2B819002BD53206008EA638 /* Build configuration list for PBXNativeTarget "Slide News" */ = {
+		B2B819002BD53206008EA638 /* Build configuration list for PBXNativeTarget "SlideNews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2B819012BD53206008EA638 /* Debug */,

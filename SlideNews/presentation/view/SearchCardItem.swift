@@ -45,6 +45,7 @@ struct SearchCardItem: View {
                     Text(article.title)
                         .font(.outfitFont(.medium, fontSize: .title3))
                         .lineLimit(3)
+                        .multilineTextAlignment(.leading)
                         .truncationMode(.head)
                         .foregroundStyle(.black)
                         .padding(.top, 10)
@@ -57,13 +58,12 @@ struct SearchCardItem: View {
                             .font(.outfitFont(.light, fontSize: .body))
                             .foregroundStyle(.gray)
                         
-                        Circle()
-                            .fill(.gray)
-                            .frame(width: 4)
+                        Spacer()
                         
                         Text(convertDate(dateString: article.publishedAt))
                             .font(.outfitFont(.light, fontSize: .body))
                             .foregroundStyle(.gray)
+                            .padding(.trailing)
                     }
                     .padding(.bottom, 10)
                 }

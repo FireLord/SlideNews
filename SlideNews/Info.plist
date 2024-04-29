@@ -17,6 +17,11 @@
 	</array>
 	<key>GIDClientID</key>
 	<string>631473522620-e8g7u2siq973aa2024cfjfj4nbq8djoe.apps.googleusercontent.com</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Outfit-Black.ttf</string>
