@@ -10,34 +10,44 @@ import SwiftUI
 struct BottomNavCustomShape: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
-            let width = Double(rect.width)
-            let height = Double(rect.height)
+            let height = rect.height
+            let width = rect.width
             let midWidth = width / 2
             let midHeight = height / 2
+            let radius: CGFloat = 50
+            let strength: Double = 5
+            let frequency: Double = 10
+            let wavelength = width / frequency
             
-            // Start with a semicircle at the left end
+            
+            // First semi-circle
             path.addArc(
                 center: CGPoint(x: 0, y: midHeight),
-                radius: CGFloat(50),
+                radius: radius,
                 startAngle: .degrees(90),
                 endAngle: .degrees(-90),
                 clockwise: false)
             
-            // Smooth Curves
-            path.addQuadCurve(
-                to: CGPoint(x: midWidth, y: midHeight),
-                control: CGPoint(x: width * 0.25, y: height * 0.25)
-            )
+            path.move(to: CGPoint(x: 0, y: midHeight + 50)) // bottom portion cover up
             
-            path.addQuadCurve(
-                to: CGPoint(x: width, y: midHeight),
-                control: CGPoint(x: width * 0.75, y: height * 0.75)
-            )
+            for x in stride(from: 0, through: width - 10, by: 1) {
+                // find our current position relative to the wavelength
+                let relativeX = x / wavelength
+                
+                // calculate the sine of that position
+                let sine = sin(relativeX)
+                
+                // multiply that sine by our strength to determine final offset, then move it down to the middle of our view
+                let y = strength * sine
+                
+                // add a line to here
+                path.addLine(to: CGPoint(x: x, y: y))
+            }
             
-            // End with a semicircle at the right end
+            // Second semi-circle
             path.addArc(
                 center: CGPoint(x: width, y: midHeight),
-                radius: CGFloat(50),
+                radius: radius,
                 startAngle: .degrees(-90),
                 endAngle: .degrees(90),
                 clockwise: false)
