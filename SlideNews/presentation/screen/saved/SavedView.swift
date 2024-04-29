@@ -24,37 +24,11 @@ struct SavedView: View {
                     .padding(.horizontal)
                 
                 // Search
-                HStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(.grayPrimary)
-                        .frame(height: 50)
-                        .overlay {
-                            TextField("Search saved news", text: $searchQuery)
-                                .font(.outfitFont(.regular, fontSize: .title3))
-                                .submitLabel(.search)
-                                .padding(.leading)
-                        }
-                    
-                    ZStack {
-                        Circle()
-                            .fill(.grayPrimary)
-                            .frame(width: 50)
-                        
-                        Button {
-                            print("hi")
-                        } label: {
-                            Circle()
-                                .fill(.graySecondary)
-                                .frame(width: 40)
-                                .shadow(radius: 10)
-                                .overlay {
-                                    Image(systemName: "magnifyingglass")
-                                        .scaleEffect(1.2)
-                                        .foregroundStyle(.white)
-                                }
-                        }
-                    }
-                }
+                SearchBar(
+                    searchQuery: $searchQuery,
+                    searchHint: "Search saved news",
+                    onSearch: {}
+                )
                 .padding(.horizontal)
                 
                 // Saved news card

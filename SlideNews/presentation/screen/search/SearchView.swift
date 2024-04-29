@@ -23,44 +23,15 @@ struct SearchView: View {
                     .padding(.top, 50)
                 
                 // Search
-                HStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(.grayPrimary)
-                        .frame(height: 50)
-                        .overlay {
-                            TextField("Search news", text: $searchQuery)
-                                .font(.outfitFont(.regular, fontSize: .title3))
-                                .submitLabel(.search)
-                                .onSubmit {
-                                    Task {
-                                        await appViewModel.getSearchNews(searchQuery: searchQuery)
-                                    }
-                                }
-                                .padding(.leading)
-                        }
-                    
-                    ZStack {
-                        Circle()
-                            .fill(.grayPrimary)
-                            .frame(width: 50)
-                        
-                        Button {
-                            Task {
-                                await appViewModel.getSearchNews(searchQuery: searchQuery)
-                            }
-                        } label: {
-                            Circle()
-                                .fill(.graySecondary)
-                                .frame(width: 40)
-                                .shadow(radius: 10)
-                                .overlay {
-                                    Image(systemName: "magnifyingglass")
-                                        .scaleEffect(1.2)
-                                        .foregroundStyle(.white)
-                                }
+                SearchBar(
+                    searchQuery: $searchQuery,
+                    searchHint: "Search news",
+                    onSearch: {
+                        Task {
+                            await appViewModel.getSearchNews(searchQuery: searchQuery)
                         }
                     }
-                }
+                )
                 .padding(.horizontal)
                 
                 // Search Card
