@@ -134,10 +134,9 @@ struct DetailView: View {
                                 ActionButton(
                                     backgroundColor: .graySecondary,
                                     iconColor: .white,
-                                    size: 40,
+                                    size: 40, articleLink: article.url,
                                     onLikeClick: {},
-                                    onSaveClick: {},
-                                    onShareClick: {}
+                                    onSaveClick: {}
                                 )
                                 .padding(.bottom, 20)
                                 .padding(.horizontal, 30)

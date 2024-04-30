@@ -89,10 +89,10 @@ struct NewsCard: View {
                     ActionButton(
                         backgroundColor: newsCardColor.iconBackgroundColor,
                         iconColor: newsCardColor.iconColor,
-                        size: 35,
+                        size: 35, 
+                        articleLink: article.url,
                         onLikeClick: {},
-                        onSaveClick: { onSave(article) },
-                        onShareClick: {}
+                        onSaveClick: { onSave(article) }
                     )
                 }
                 .padding(.bottom)
