@@ -46,7 +46,7 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     // MARK: BUG - some weird issuse when using HStack
-                    LazyHStack(alignment: .top) {
+                    LazyHStack {
                         ForEach(appViewModel.articleFetchList) { article in
                             let index = appViewModel.articleFetchList.firstIndex(where: { $0.id == article.id })
                             let colorIndex = index! % NewsCardColor.cardColorList.count
@@ -78,6 +78,7 @@ struct HomeView: View {
                         }
                     }
                 }
+                .offset(y: -40) // MARK: BUG - some weird issuse when using LazyHStack
                 .scrollTargetBehavior(.paging)
                 .ignoresSafeArea()
                 .alert(item: $appViewModel.alertItem) { alertItem in
