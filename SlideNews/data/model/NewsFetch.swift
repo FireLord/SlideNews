@@ -20,7 +20,7 @@ struct NewsFetch: Codable {
     ]
 }
 
-struct Article: Codable {
+struct Article: Identifiable, Codable {
     var id = UUID().uuidString
     let author: String?
     let title: String
@@ -43,4 +43,13 @@ struct Article: Codable {
         publishedAt: "2024-04-26T18:27:44Z",
         content: "Bollywood actress Katrina Kaifrecently revealed in a candid interview that she starts her mornings with a delicious and nutritious fruit — persimmon.This lesser-known vibrant orange fruit, packed wit… [+3053 chars]"
     )
+}
+
+extension [Article] {
+    func zIndex(_ article: Article) -> CGFloat {
+        if let index = firstIndex(where: { $0.id == article.id}) {
+            return CGFloat(count) - CGFloat(index)
+        }
+        return .zero
+    }
 }

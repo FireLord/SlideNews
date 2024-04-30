@@ -74,9 +74,7 @@ struct SavedView: View {
                                 NewsCard(
                                     article: appViewModel.articleDbList[index],
                                     newsCardColor: color,
-                                    onSwipeOut: {
-                                        print("hi")
-                                    },
+                                    
                                     onSave: { article in
                                         Task {
                                             try await appViewModel.deleteSavedNews(article: article)

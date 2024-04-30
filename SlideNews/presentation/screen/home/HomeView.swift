@@ -33,40 +33,50 @@ struct HomeView: View {
                     }
                 }
                 .padding()
-            
-                ZStack {
-                    if appViewModel.isLoading {
+
+                
+                if appViewModel.isLoading {
+                    ZStack {
                         ProgressView()
                             .scaleEffect(2)
                             .tint(.primaryTwo)
-                    } else {
-                        ForEach(0 ..< appViewModel.articleFetchList.count, id: \.self) { index in
-                            let colorIndex = index % NewsCardColor.cardColorList.count
+                    }
+                }
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 0) {
+                        ForEach(appViewModel.articleFetchList) { article in
+                            let index = appViewModel.articleFetchList.firstIndex(where: { $0.id == article.id })
+                            let colorIndex = index! % NewsCardColor.cardColorList.count
                             let color = NewsCardColor.cardColorList[colorIndex]
                             
                             NavigationLink {
-                                DetailView(article: appViewModel.articleFetchList[index], newsCardColor: color)
+                                DetailView(article: article, newsCardColor: color)
                             } label: {
                                 NewsCard(
-                                    article: appViewModel.articleFetchList[index],
+                                    article: article,
                                     newsCardColor: color,
-                                    x: index % 2 == 0 ? 40 : 0,
-                                    y: index % 2 == 0 ? 20 : 0,
-                                    degree: index % 2 == 0 ? 10 : 0,
-                                    isCustomGesture: true,
-                                    onSwipeOut: {
-                                        appViewModel.articleFetchList.remove(at: index)
-                                    },
                                     onSave: { article in
                                         Task {
                                             try await appViewModel.saveNews(article: article)
                                         }
                                     }
                                 )
+                                .padding()
+                                .frame(width: UIScreen.main.bounds.width)
+                                .visualEffect { content, geometryProxy in
+                                    content
+                                        .scaleEffect(scale(geometryProxy, scale: 0.1), anchor: .bottomTrailing)
+                                        .rotationEffect(rotation(geometryProxy), anchor: .bottom)
+                                        .offset(x: minX(geometryProxy))
+                                        .offset(x: excessMinX(geometryProxy))
+                                }
                             }
+                            .zIndex(appViewModel.articleFetchList.zIndex(article))
                         }
                     }
                 }
+                .scrollTargetBehavior(.paging)
+                .frame(height: 540)
                 .alert(item: $appViewModel.alertItem) { alertItem in
                     Alert(title: alertItem.title,
                           message: alertItem.message,
