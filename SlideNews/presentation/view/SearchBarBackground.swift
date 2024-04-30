@@ -5,7 +5,6 @@
 //  Created by Aman Kumar on 30/04/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct SearchBarBackground: Shape {
@@ -25,13 +24,40 @@ struct SearchBarBackground: Shape {
                 endAngle: .degrees(-90),
                 clockwise: false)
             
-            path.addLine(to: CGPoint(x: width - 100, y: midHeight - radius))
+            path.addLine(to: CGPoint(x: width - (2 * radius) - 20, y: midHeight - radius))
             
             path.addCurve(
-                to: CGPoint(x: midWidth + 100, y: midHeight - radius),
-                control1: CGPoint(x: midWidth + 80, y: 60),
-                control2: CGPoint(x: midWidth + 80, y: 60)
+                to: CGPoint(x: width - (2 * radius) + 20, y: midHeight - 10),
+                control1: CGPoint(x: width - (2 * radius) + 10, y: midHeight - radius),
+                control2: CGPoint(x: width - (2 * radius) + 10, y: midHeight - 10)
             )
+            
+            path.addCurve(
+                to: CGPoint(x: width, y: midHeight - radius),
+                control1: CGPoint(x: width - 20, y: midHeight - 10),
+                control2: CGPoint(x: width - 20, y: midHeight - radius)
+            )
+            
+            path.addArc(
+                center: CGPoint(x: width, y: midHeight),
+                radius: radius,
+                startAngle: .degrees(-90),
+                endAngle: .degrees(90),
+                clockwise: false)
+            
+            path.addCurve(
+                to: CGPoint(x: width - (2 * radius) + 20, y: midHeight + 10),
+                control1: CGPoint(x: width - 20, y: midHeight + radius),
+                control2: CGPoint(x: width - 20, y: midHeight + 10)
+            )
+            
+            path.addCurve(
+                to: CGPoint(x: width - (2 * radius) - 10, y: midHeight + radius),
+                control1: CGPoint(x: width - (2 * radius) + 10, y: midHeight + 10),
+                control2: CGPoint(x: width - (2 * radius) + 10, y: midHeight + radius)
+            )
+            
+            path.addLine(to: CGPoint(x: 0, y: midHeight + radius))
         }
     }
 }
@@ -39,8 +65,8 @@ struct SearchBarBackground: Shape {
 #Preview {
     ZStack {
         SearchBarBackground()
-            .stroke(lineWidth: 1)
-            .frame(width: UIScreen.main.bounds.width - 100, height: 100)
+//            .stroke(lineWidth: 1)
+            .frame(width: 300, height: 100)
             .foregroundStyle(.white)
     }
 }

@@ -14,39 +14,39 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(.grayPrimary)
-                .frame(height: 50)
-                .overlay {
-                    TextField(searchHint, text: $searchQuery)
-                        .font(.outfitFont(.regular, fontSize: .title3))
-                        .submitLabel(.search)
-                        .padding(.leading)
-                        .onSubmit {
-                            onSearch()
-                        }
+            TextField(searchHint, text: $searchQuery)
+                .font(.outfitFont(.regular, fontSize: .title3))
+                .submitLabel(.search)
+                .padding(.leading)
+                .onSubmit {
+                    onSearch()
                 }
             
-            ZStack {
+            Spacer()
+            
+            Button {
+                onSearch()
+            } label: {
                 Circle()
-                    .fill(.grayPrimary)
-                    .frame(width: 50)
-                
-                Button {
-                    onSearch()
-                } label: {
-                    Circle()
-                        .fill(.graySecondary)
-                        .frame(width: 40)
-                        .shadow(radius: 10)
-                        .overlay {
-                            Image(systemName: "magnifyingglass")
-                                .scaleEffect(1.2)
-                                .foregroundStyle(.white)
-                        }
-                }
+                    .fill(.graySecondary)
+                    .frame(width: 40)
+                    .shadow(radius: 10)
+                    .overlay {
+                        Image(systemName: "magnifyingglass")
+                            .scaleEffect(1.2)
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.trailing, 5)
             }
         }
+        .background(
+            SearchBarBackground()
+                .fill(.grayPrimary)
+                .padding(.horizontal)
+                .frame(width: UIScreen.main.bounds.width - 50)
+                
+        )
+        .padding(.horizontal)
     }
 }
 

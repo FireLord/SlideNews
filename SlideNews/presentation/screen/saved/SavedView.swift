@@ -29,7 +29,6 @@ struct SavedView: View {
                     searchHint: "Search saved news",
                     onSearch: {}
                 )
-                .padding(.horizontal)
                 
                 // Saved news card
                 ScrollView(showsIndicators: false) {

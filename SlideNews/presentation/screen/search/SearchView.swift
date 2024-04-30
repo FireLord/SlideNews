@@ -34,7 +34,6 @@ struct SearchView: View {
                         }
                     }
                 )
-                .padding(.horizontal)
                 
                 // Search Card
                 ScrollView {
