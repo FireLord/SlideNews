@@ -12,6 +12,7 @@ struct SavedView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.modelContext) var context
     @State var searchQuery: String = ""
+    @State var offsetValue: CGFloat = 150
     
     var body: some View {
         NavigationStack {
@@ -63,10 +64,15 @@ struct SavedView: View {
                         }
                     }
                 }
+                .offset(y: offsetValue)
                 .ignoresSafeArea()
                 .onAppear {
                     Task {
                         try await appViewModel.getAllSavedNews()
+                    }
+                    
+                    withAnimation {
+                        offsetValue = 0
                     }
                 }
             }

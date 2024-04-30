@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     @State var categoryPosition = 0
+    @State var offsetValue: CGFloat = 150
     let categoryList = ["Trending", "Health", "Sports", "Business"]
     
     var body: some View {
@@ -78,7 +79,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                .offset(y: -40) // MARK: BUG - some weird issuse when using LazyHStack
+                .offset(y: offsetValue) // MARK: BUG - some weird issuse when using LazyHStack
                 .scrollTargetBehavior(.paging)
                 .ignoresSafeArea()
                 .alert(item: $appViewModel.alertItem) { alertItem in
@@ -98,6 +99,9 @@ struct HomeView: View {
             }
             .onAppear {
                 UserDefaults.standard.set(true, forKey: "homeOpen")
+                withAnimation {
+                    offsetValue = -40
+                }
             }
         }
     }
