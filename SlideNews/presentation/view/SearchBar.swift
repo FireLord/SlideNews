@@ -22,6 +22,9 @@ struct SearchBar: View {
                         .font(.outfitFont(.regular, fontSize: .title3))
                         .submitLabel(.search)
                         .padding(.leading)
+                        .onSubmit {
+                            onSearch()
+                        }
                 }
             
             ZStack {

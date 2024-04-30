@@ -78,6 +78,7 @@ struct MainTabView: View {
                 )
             }
             .opacity(appViewModel.isNavBarHidden ? 0 : 1)
+            .ignoresSafeArea(.keyboard)
         }
     }
 }

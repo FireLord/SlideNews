@@ -28,7 +28,9 @@ struct SearchView: View {
                     searchHint: "Search news",
                     onSearch: {
                         Task {
-                            await appViewModel.getSearchNews(searchQuery: searchQuery)
+                            if !searchQuery.isEmpty {
+                                await appViewModel.getSearchNews(searchQuery: searchQuery)
+                            }
                         }
                     }
                 )
@@ -62,8 +64,6 @@ struct SearchView: View {
                           dismissButton: alertItem.dismissButton)
                 }
                 .padding(.top)
-                
-                Spacer()
             }
             .ignoresSafeArea()
         }
