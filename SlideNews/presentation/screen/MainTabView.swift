@@ -39,6 +39,7 @@ struct MainTabView: View {
                                     .scaleEffect(1.5)
                                     .foregroundStyle(index == 0 ? .black : .white)
                             }
+                            .shadow(radius: 10)
                     }
                     
                     Button {
@@ -52,6 +53,7 @@ struct MainTabView: View {
                                     .scaleEffect(1.5)
                                     .foregroundStyle(index == 1 ? .black : .white)
                             }
+                            .shadow(radius: 10)
                     }
                     
                     Button {
@@ -65,6 +67,7 @@ struct MainTabView: View {
                                     .scaleEffect(1.5)
                                     .foregroundStyle(index == 2 ? .black : .white)
                             }
+                            .shadow(radius: 10)
                     }
                 }
                 .background(
