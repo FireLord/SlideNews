@@ -32,47 +32,18 @@ struct SavedView: View {
                 .padding(.horizontal)
                 
                 // Saved news card
-//                ZStack {
-//                    ForEach(0 ..< appViewModel.articleDbList.count, id: \.self) { index in
-//                        let colorIndex = index % NewsCardColor.cardColorList.count
-//                        let color = NewsCardColor.cardColorList[colorIndex]
-//                        NavigationLink {
-//                            DetailView(article: appViewModel.articleDbList[index], newsCardColor: color)
-//                        } label: {
-//                            NewsCard(
-//                                article: appViewModel.articleDbList[index],
-//                                newsCardColor: color,
-//                                x: CGFloat(index * -15),
-//                                y: CGFloat(index * 200),
-//                                degree: CGFloat(index * -5),
-//                                onSwipeOut: {
-//                                    print("hi")
-//                                },
-//                                onSave: { article in
-//                                    Task {
-//                                        try await appViewModel.deleteSavedNews(article: article)
-//                                    }
-//                                }
-//                            )
-//                        }
-//                    }
-//                }
-//                .onAppear {
-//                    Task {
-//                        try await appViewModel.getAllSavedNews()
-//                    }
-//                }
-                
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        ForEach(0 ..< appViewModel.articleDbList.count, id: \.self) { index in
-                            let colorIndex = index % NewsCardColor.cardColorList.count
+                        ForEach(appViewModel.articleDbList) { article in
+                            let index = appViewModel.articleDbList.firstIndex(where: { $0.id == article.id })
+                            let colorIndex = index! % NewsCardColor.cardColorList.count
                             let color = NewsCardColor.cardColorList[colorIndex]
+                            
                             NavigationLink {
-                                DetailView(article: appViewModel.articleDbList[index], newsCardColor: color)
+                                DetailView(article: article, newsCardColor: color)
                             } label: {
                                 NewsCard(
-                                    article: appViewModel.articleDbList[index],
+                                    article: article,
                                     newsCardColor: color,
                                     
                                     onSave: { article in
@@ -81,15 +52,15 @@ struct SavedView: View {
                                         }
                                     }
                                 )
-                                .scrollTransition { content, phase in
+                                .visualEffect { content, geometryProxy in
                                     content
-                                        .offset(
-                                            x: phase.isIdentity ? 0 : 15,
-                                            y: phase.isIdentity ? 0 : -300
-                                        )
-                                        .rotationEffect(.degrees(phase.isIdentity ? 0 : -5))
+                                        .scaleEffect(scaleY(geometryProxy, scale: 0), anchor: .top)
+                                        .rotationEffect(rotationY(geometryProxy, rotation: -2))
+                                        .offset(y: minY(geometryProxy))
+                                        .offset(y: excessMinY(geometryProxy, offset: 200))
                                 }
                             }
+                            .zIndex(appViewModel.articleDbList.zIndex(article))
                         }
                     }
                 }

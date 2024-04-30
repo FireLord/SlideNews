@@ -32,18 +32,21 @@ struct HomeView: View {
                             }
                     }
                 }
-                .padding()
+                .padding(.horizontal)
 
-                
                 if appViewModel.isLoading {
                     ZStack {
                         ProgressView()
                             .scaleEffect(2)
                             .tint(.primaryTwo)
+                        
                     }
+                    Spacer()
                 }
+                
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 0) {
+                    // MARK: BUG - some weird issuse when using HStack
+                    LazyHStack {
                         ForEach(appViewModel.articleFetchList) { article in
                             let index = appViewModel.articleFetchList.firstIndex(where: { $0.id == article.id })
                             let colorIndex = index! % NewsCardColor.cardColorList.count
@@ -61,22 +64,23 @@ struct HomeView: View {
                                         }
                                     }
                                 )
-                                .padding()
                                 .frame(width: UIScreen.main.bounds.width)
                                 .visualEffect { content, geometryProxy in
                                     content
-                                        .scaleEffect(scale(geometryProxy, scale: 0.1), anchor: .bottomTrailing)
+                                        .scaleEffect(scale(geometryProxy, scale: 0.01), anchor: .trailing)
                                         .rotationEffect(rotation(geometryProxy), anchor: .bottom)
                                         .offset(x: minX(geometryProxy))
                                         .offset(x: excessMinX(geometryProxy))
                                 }
+                                
                             }
                             .zIndex(appViewModel.articleFetchList.zIndex(article))
                         }
                     }
                 }
+                .offset(y: -40) // MARK: BUG - some weird issuse when using LazyHStack
                 .scrollTargetBehavior(.paging)
-                .frame(height: 540)
+                .ignoresSafeArea()
                 .alert(item: $appViewModel.alertItem) { alertItem in
                     Alert(title: alertItem.title,
                           message: alertItem.message,
@@ -91,9 +95,6 @@ struct HomeView: View {
                         await appViewModel.getAllNews(category: categoryList[categoryPosition] == "Trending" ? "" : categoryList[categoryPosition])
                     }
                 }
-                
-                Spacer()
-                
             }
             .onAppear {
                 UserDefaults.standard.set(true, forKey: "homeOpen")

@@ -82,6 +82,8 @@ struct NewsCard: View {
                     .padding(.horizontal)
                     .padding(.bottom)
                 
+                Spacer()
+                
                 HStack {
                     Spacer()
                     
@@ -115,10 +117,11 @@ struct NewsCard: View {
                         )
                     }
                 }
-                .padding(.bottom, 4)
+                .padding(.bottom)
                 .padding(.horizontal)
             }
         }
+        .frame(height: 550)
         .padding(.horizontal)
     }
 }
