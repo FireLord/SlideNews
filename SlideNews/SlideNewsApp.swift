@@ -20,15 +20,9 @@ struct SlideNewsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if UserDefaults.standard.bool(forKey: "homeOpen") {
-                MainTabView()
-                    .environmentObject(appViewModel)
-                    .environmentObject(loginViewModel)
-            } else {
-                LoginView()
-                    .environmentObject(appViewModel)
-                    .environmentObject(loginViewModel)
-            }
+            SplashView()
+                .environmentObject(appViewModel)
+                .environmentObject(loginViewModel)
         }
         .modelContainer(SlideNewsDatabase.shared.container)
     }

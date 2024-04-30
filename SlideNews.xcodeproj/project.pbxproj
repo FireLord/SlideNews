@@ -79,6 +79,7 @@
 		B2B8F88C2BDAF2D80069ED7D /* SearchCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */; };
 		B2E86E2B2BE022E500ED4924 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */; };
 		B2E86E2D2BE0234200ED4924 /* AnyRoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E86E2C2BE0234200ED4924 /* AnyRoundedCorner.swift */; };
+		B2F9AD162BE1430500AC6972 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F9AD152BE1430500AC6972 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,7 @@
 		B2B8F88B2BDAF2D80069ED7D /* SearchCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardItem.swift; sourceTree = "<group>"; };
 		B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
 		B2E86E2C2BE0234200ED4924 /* AnyRoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRoundedCorner.swift; sourceTree = "<group>"; };
+		B2F9AD152BE1430500AC6972 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +334,7 @@
 				B22C33492BD58F8000D6A63A /* search */,
 				B22C33482BD58F7300D6A63A /* saved */,
 				B22C33452BD58F4D00D6A63A /* MainTabView.swift */,
+				B2F9AD152BE1430500AC6972 /* SplashView.swift */,
 			);
 			path = screen;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				841B0FB82BDBA2D80047E442 /* NewsRemoteDataSource.swift in Sources */,
 				841B0FBF2BDBA36E0047E442 /* GetSearchNewsUseCase.swift in Sources */,
 				B243A8A22BDE2C1D000685F5 /* GoogleButton.swift in Sources */,
+				B2F9AD162BE1430500AC6972 /* SplashView.swift in Sources */,
 				B26FC5A02BDD6AFD001A73B1 /* NewsDao.swift in Sources */,
 				B21306682BDE16FA00D1CF1D /* AuthRepositoryImpl.swift in Sources */,
 				B2E86E2D2BE0234200ED4924 /* AnyRoundedCorner.swift in Sources */,
