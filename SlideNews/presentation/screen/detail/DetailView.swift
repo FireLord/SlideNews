@@ -103,69 +103,48 @@ struct DetailView: View {
                             .padding(.horizontal)
                         
                         // Post Image
-                        AsyncImage(url: URL(string: article.urlToImage ?? "")) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView() // Placeholder while loading
+                        ZStack {
+                            AsyncImage(url: URL(string: article.urlToImage ?? "")) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView() // Placeholder while loading
+                                    
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                    
+                                case .failure:
+                                    Image(systemName: "photo") // Placeholder for failure/error
+                                        .resizable()
+                                        .scaledToFit()
+                                    
+                                default:
+                                    Image("photo") // Placeholder for failure/error
+                                        .resizable()
+                                        .scaledToFit()
+                                }
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.horizontal)
+                            
+                            VStack {
+                                Spacer()
                                 
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                
-                            case .failure:
-                                Image(systemName: "photo") // Placeholder for failure/error
-                                    .resizable()
-                                    .scaledToFit()
-                                
-                            default:
-                                Image("photo") // Placeholder for failure/error
-                                    .resizable()
-                                    .scaledToFit()
+                                ActionButton(
+                                    backgroundColor: .graySecondary,
+                                    iconColor: .white,
+                                    size: 40,
+                                    onLikeClick: {},
+                                    onSaveClick: {},
+                                    onShareClick: {}
+                                )
+                                .padding(.bottom, 20)
+                                .padding(.horizontal, 30)
+                                .shadow(radius: 10)
                             }
                         }
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(.horizontal)
-                    }
-                    
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                print("like")
-                            } label: {
-                                ActionButton(
-                                    backgroundColor: .black,
-                                    iconName: "hand.thumbsup",
-                                    iconColor: .white
-                                )
-                            }
-                            
-                            Button {
-                                print("like")
-                            } label: {
-                                ActionButton(
-                                    backgroundColor: .black,
-                                    iconName: "bookmark",
-                                    iconColor: .white
-                                )
-                            }
-                            
-                            Button {
-                                print("like")
-                            } label: {
-                                ActionButton(
-                                    backgroundColor: .black,
-                                    iconName: "square.and.arrow.up",
-                                    iconColor: .white
-                                )
-                            }
-                        }
-                        .padding(.bottom, 40)
-                        .padding(.horizontal, 30)
+                        .padding(.bottom, 20)
                     }
                 }
             }

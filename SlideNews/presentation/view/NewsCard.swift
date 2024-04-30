@@ -86,36 +86,14 @@ struct NewsCard: View {
                 
                 HStack {
                     Spacer()
-                    
-                    Button {
-                        print("like")
-                    } label: {
-                        ActionButton(
-                            backgroundColor: newsCardColor.iconBackgroundColor,
-                            iconName: "hand.thumbsup",
-                            iconColor: newsCardColor.iconColor
-                        )
-                    }
-                    
-                    Button {
-                        onSave(article)
-                    } label: {
-                        ActionButton(
-                            backgroundColor: newsCardColor.iconBackgroundColor,
-                            iconName: "bookmark",
-                            iconColor: newsCardColor.iconColor
-                        )
-                    }
-                    
-                    Button {
-                        print("like")
-                    } label: {
-                        ActionButton(
-                            backgroundColor: newsCardColor.iconBackgroundColor,
-                            iconName: "square.and.arrow.up",
-                            iconColor: newsCardColor.iconColor
-                        )
-                    }
+                    ActionButton(
+                        backgroundColor: newsCardColor.iconBackgroundColor,
+                        iconColor: newsCardColor.iconColor,
+                        size: 35,
+                        onLikeClick: {},
+                        onSaveClick: { onSave(article) },
+                        onShareClick: {}
+                    )
                 }
                 .padding(.bottom)
                 .padding(.horizontal)
