@@ -10,14 +10,17 @@
 - Firebase firestore for master slave db setup.
 - Design link: https://dribbble.com/shots/20391043-News-App
 
+## Featured Video
+https://github.com/FireLord/SlideNews/assets/11666916/fd4ff191-1faa-4fb4-8a7e-af71b13b1295
+
 ## Screenshots
 <img src = "/assets/screenshots/1.png" alt="screenshot1" width="200"/> <img src = "/assets/screenshots/2.png" alt="screenshot2" width="200"/> 
 <img src = "/assets/screenshots/3.png" alt="screenshot3" width="200"/> <img src = "/assets/screenshots/4.png" alt="screenshot4" width="200"/> 
 <img src = "/assets/screenshots/5.png" alt="screenshot5" width="200"/> <img src = "/assets/screenshots/6.png" alt="screenshot6" width="200"/>
 
 ## Bézier curve calculations
-<img src = "/assets/screenshots/board2.png" alt="board1" width="200"/> <img src = "/assets/screenshots/board3.png" alt="board2" width="200"/> 
-<img src = "/assets/screenshots/board1.png" alt="board3" width="200"/>
+<img src = "/assets/board/board2.png" alt="board1" width="200"/> <img src = "/assets/board/board3.png" alt="board2" width="200"/> 
+<img src = "/assets/board/board1.png" alt="board3" width="200"/>
 
 ## Getting Started
 To run the Slide News App on your local machine, follow these steps:
