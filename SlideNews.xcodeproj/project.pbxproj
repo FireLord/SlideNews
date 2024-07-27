@@ -15,6 +15,7 @@
 		841B0FC32BDBA39F0047E442 /* GetSavedNewsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B0FC22BDBA39F0047E442 /* GetSavedNewsUseCase.swift */; };
 		841B0FC52BDBA3B40047E442 /* SaveNewsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B0FC42BDBA3B40047E442 /* SaveNewsUseCase.swift */; };
 		841B0FC82BDBA4020047E442 /* NewsRemoteDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B0FC72BDBA4020047E442 /* NewsRemoteDataSourceImpl.swift */; };
+		B20FC5E22BF7CE360071A63E /* UINavigationControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20FC5E12BF7CE360071A63E /* UINavigationControllerExt.swift */; };
 		B21306552BDE145400D1CF1D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21306542BDE145400D1CF1D /* LoginViewModel.swift */; };
 		B21306572BDE153200D1CF1D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21306562BDE153200D1CF1D /* AuthRepository.swift */; };
 		B213065A2BDE15DB00D1CF1D /* LoginEmailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21306592BDE15DB00D1CF1D /* LoginEmailUseCase.swift */; };
@@ -91,6 +92,7 @@
 		841B0FC22BDBA39F0047E442 /* GetSavedNewsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedNewsUseCase.swift; sourceTree = "<group>"; };
 		841B0FC42BDBA3B40047E442 /* SaveNewsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewsUseCase.swift; sourceTree = "<group>"; };
 		841B0FC72BDBA4020047E442 /* NewsRemoteDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRemoteDataSourceImpl.swift; sourceTree = "<group>"; };
+		B20FC5E12BF7CE360071A63E /* UINavigationControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExt.swift; sourceTree = "<group>"; };
 		B21306542BDE145400D1CF1D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B21306562BDE153200D1CF1D /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		B21306592BDE15DB00D1CF1D /* LoginEmailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailUseCase.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E86E2A2BE022E500ED4924 /* AuthenticationFormProtocol.swift */,
+				B20FC5E12BF7CE360071A63E /* UINavigationControllerExt.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				B21306552BDE145400D1CF1D /* LoginViewModel.swift in Sources */,
 				841B0FB82BDBA2D80047E442 /* NewsRemoteDataSource.swift in Sources */,
 				841B0FBF2BDBA36E0047E442 /* GetSearchNewsUseCase.swift in Sources */,
+				B20FC5E22BF7CE360071A63E /* UINavigationControllerExt.swift in Sources */,
 				B243A8A22BDE2C1D000685F5 /* GoogleButton.swift in Sources */,
 				B2F9AD162BE1430500AC6972 /* SplashView.swift in Sources */,
 				B26FC5A02BDD6AFD001A73B1 /* NewsDao.swift in Sources */,
